@@ -1,5 +1,8 @@
 package com.simulacion.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import com.simulacion.models.HalfSquares;
 import com.simulacion.models.LinearCongruence;
 import com.simulacion.models.MultiplicativeCongruence;
@@ -7,12 +10,12 @@ import com.simulacion.models.NormalDistri;
 import com.simulacion.models.UniformDistri;
 import com.simulacion.views.frames.JFrameMain;
 
-public class Controller {
+public class Controller implements ActionListener{
 
     private JFrameMain frameMain;
 
     public Controller(){
-        frameMain = new JFrameMain();
+        frameMain = new JFrameMain(this);
         //linearCongruence();
         //multiplicativeCongruence();
         //halfSquares();
@@ -66,5 +69,11 @@ public class Controller {
         //UniformDistri uniform = new UniformDistri(80, 8,20, System.currentTimeMillis());
         UniformDistri uniform = new UniformDistri(80, 8,20);
         System.out.println(uniform.getNumbersNi().toString());      
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
