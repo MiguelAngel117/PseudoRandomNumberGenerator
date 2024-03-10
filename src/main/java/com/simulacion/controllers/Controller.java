@@ -3,11 +3,7 @@ package com.simulacion.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.simulacion.models.HalfSquares;
-import com.simulacion.models.LinearCongruence;
-import com.simulacion.models.MultiplicativeCongruence;
-import com.simulacion.models.NormalDistri;
-import com.simulacion.models.UniformDistri;
+import com.simulacion.models.*;
 import com.simulacion.views.frames.JFrameMain;
 
 public class Controller implements ActionListener{

@@ -2,7 +2,6 @@ package com.simulacion.views.sections;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.awt.Color;

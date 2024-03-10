@@ -2,41 +2,39 @@ package com.simulacion.views.panels;
 
 import java.awt.event.ActionListener;
 import java.util.List;
+
 import javax.swing.JTabbedPane;
 
 import com.simulacion.views.sections.*;
 
-
 public class JTabbedMethods extends JTabbedPane {
 
-    private JPanelMain midSquare;
-    private JPanelMain multiplicative;
-    private JPanelMain linear;
-    private JPanelMain uniform;
-    private JPanelMain normal;
+    private final JPanelMain midSquare;
+    private final JPanelMain multiplicative;
+    private final JPanelMain linear;
+    private final JPanelMain uniform;
+    private final JPanelMain normal;
 
     public JTabbedMethods(ActionListener listener) {
-        initComponents(listener);
+        midSquare = createPanel("Cuadrados Medios", new HalfSquaresSection(listener));
+        multiplicative = createPanel("Congruencial Multiplicativa", new MultiplicativeSection(listener));
+        linear = createPanel("Congruencial Lineal", new LinearSection(listener));
+        uniform = createTablePanel("D. Uniforme", new UniformSection(listener), new String[]{"Ri", "Ni"});
+        normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Xi", "Ri"});
     }
 
-    private void initComponents(ActionListener listener) {
-        midSquare = new JPanelMain(new HalfSquaresSection(listener));
-        this.add("Cuadrados Medios", midSquare);
-
-        multiplicative = new JPanelMain(new MultiplicativeSection(listener));
-        this.add("Congruencial Multiplicativa", multiplicative);
-
-        linear = new JPanelMain(new LinearSection(listener));
-        this.add("Congruencial Lineal", linear);
-
-        uniform = new JPanelMain(new UniformSection(listener));
-        //uniform.setTableHeader(new String[] { "Ri", "Ni" });
-        this.add("D. Uniforme", uniform);
-
-        normal = new JPanelMain(new NormalSection(listener));
-        //normal.setTableHeader(new String[] { "Xi", "Ri" });
-        this.add("D. Normal", normal);
+    private JPanelMain createPanel(String title, JPanelSection section) {
+        JPanelMain panel = new JPanelMain(section);
+        add(title, panel);
+        return panel;
     }
+
+    private JPanelMain createTablePanel(String title, JPanelSection section, String[] headers) {
+        JPanelMain panel = createPanel(title, section);
+        panel.setTableHeader(headers);
+        return panel;
+    }
+
 
     public JPanelSection getMidSrtHeader() {
         return midSquare.getSection();
@@ -58,7 +56,7 @@ public class JTabbedMethods extends JTabbedPane {
         return normal.getSection();
     }
 
-   /*// Middle
+    // Middle
     public void setMiddSTableRow(Object[] element) {
         midSquare.setTableRow(element);
     }
@@ -93,7 +91,6 @@ public class JTabbedMethods extends JTabbedPane {
     }
 
     // Multiplicative
-
     public void resetMultiplicativeTable() {
         multiplicative.resetTable();
     }
@@ -142,5 +139,5 @@ public class JTabbedMethods extends JTabbedPane {
 
     public void setNormalGraphicData(List<Double> interval) {
         normal.setGraphicData(interval);
-    }*/
+    }
 }
