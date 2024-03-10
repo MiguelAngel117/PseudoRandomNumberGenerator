@@ -18,4 +18,5 @@ public class CustomRandom {
         seed = (a * seed + c) % m;
         return (double) seed / m;
     }
+
 }
