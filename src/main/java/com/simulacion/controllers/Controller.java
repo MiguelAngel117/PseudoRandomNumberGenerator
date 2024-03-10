@@ -57,7 +57,8 @@ public class Controller {
     }
 
     public void uniformDistribution(){
-        UniformDistri uniform = new UniformDistri(800, 8,20);
+        //UniformDistri uniform = new UniformDistri(80, 8,20, System.currentTimeMillis());
+        UniformDistri uniform = new UniformDistri(80, 8,20);
         System.out.println(uniform.getNumbersNi().toString());      
     }
 }
