@@ -4,7 +4,10 @@ import java.util.List;
 
 public class UniformDistri {
     private int quantity;
-    private List<Double> aleatoryNumbers;
+    private int min;
+    private int max;
+    private List<Double> aleatoryNumbersRi;
+    private List<Double> aleatoryNumbersNi;
 
     /**
      * Constructor de la clase Uniform.
@@ -13,7 +16,25 @@ public class UniformDistri {
      */
     public UniformDistri(int quantity) {
         this.quantity = quantity;
-        this.aleatoryNumbers = new ArrayList<>();
+        aleatoryNumbersRi = new ArrayList<>();aleatoryNumbersNi = new ArrayList<>();
+        generateNumbersRi();
+        generateNumbersNi();
+    }
+
+    /**
+     * Genera números aleatorios y los agrega a la lista.
+     */
+    private void generateNumbersRi() {
+        for (int i = 0; i < quantity; i++) {
+            aleatoryNumbersRi.add(Math.random());
+        }
+    }
+
+    private void generateNumbersNi() {
+        for (Double ri : aleatoryNumbersRi) {
+            double ni = min +(max - min) * ri;
+            aleatoryNumbersNi.add(ni);
+        }
     }
 
     /**
@@ -21,17 +42,12 @@ public class UniformDistri {
      *
      * @return Lista de números aleatorios.
      */
-    public List<Double> getAleatory() {
-        generateRandom();
-        return aleatoryNumbers;
+    public List<Double> getNumbersRi() {
+        return aleatoryNumbersRi;
     }
 
-    /**
-     * Genera números aleatorios y los agrega a la lista.
-     */
-    private void generateRandom() {
-        for (int i = 0; i < quantity; i++) {
-            aleatoryNumbers.add(Math.random());
-        }
+    public List<Double> getNumbersNi() {
+        return aleatoryNumbersNi;
     }
+
 }
