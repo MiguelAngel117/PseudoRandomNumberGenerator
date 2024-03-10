@@ -5,13 +5,19 @@ import com.simulacion.models.LinearCongruence;
 import com.simulacion.models.MultiplicativeCongruence;
 import com.simulacion.models.NormalDistri;
 import com.simulacion.models.UniformDistri;
+import com.simulacion.views.frames.JFrameMain;
 
 public class Controller {
+
+    private JFrameMain frameMain;
+
     public Controller(){
+        frameMain = new JFrameMain();
         //linearCongruence();
         //multiplicativeCongruence();
         //halfSquares();
         //normalDistribution();
+        frameMain.setVisible(true);
         uniformDistribution();
     }
 
