@@ -14,8 +14,10 @@ public class UniformDistri {
      *
      * @param quantity Cantidad de números a generar.
      */
-    public UniformDistri(int quantity) {
+    public UniformDistri(int quantity, int min, int max) {
         this.quantity = quantity;
+        this.min = min;
+        this.max = max;
         aleatoryNumbersRi = new ArrayList<>();aleatoryNumbersNi = new ArrayList<>();
         generateNumbersRi();
         generateNumbersNi();

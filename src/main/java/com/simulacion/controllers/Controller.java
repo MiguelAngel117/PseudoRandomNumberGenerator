@@ -4,13 +4,15 @@ import com.simulacion.models.HalfSquares;
 import com.simulacion.models.LinearCongruence;
 import com.simulacion.models.MultiplicativeCongruence;
 import com.simulacion.models.NormalDistri;
+import com.simulacion.models.UniformDistri;
 
 public class Controller {
     public Controller(){
         //linearCongruence();
         //multiplicativeCongruence();
         //halfSquares();
-        normal();
+        //normalDistribution();
+        uniformDistribution();
     }
 
     public void linearCongruence(){
@@ -46,11 +48,16 @@ public class Controller {
         }
     }
 
-    public void normal(){
+    public void normalDistribution(){
         NormalDistri normal = new NormalDistri(100,10,17,15);
         
         System.out.println(normal.getAverage());
         System.out.println(normal.getDesviation());
         System.out.println(normal.getAleatoryNi().toString());
+    }
+
+    public void uniformDistribution(){
+        UniformDistri uniform = new UniformDistri(800, 8,20);
+        System.out.println(uniform.getNumbersNi().toString());      
     }
 }
