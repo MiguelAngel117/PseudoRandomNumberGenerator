@@ -63,7 +63,6 @@ public class Controller implements ActionListener{
                 }
                 break;
             case "NORMAL":
-            System.out.println("ENTRA-----");
                 section = frameMain.getHeaderByType("NORMAL");
                 try {
                     normalDistribution(section, method);

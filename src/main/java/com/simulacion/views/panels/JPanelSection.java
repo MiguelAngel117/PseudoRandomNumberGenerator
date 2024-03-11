@@ -12,7 +12,7 @@ public class JPanelSection extends JPanel {
 
     private void initializePanel() {
         setBorder(BorderFactory.createTitledBorder("Metodos de Generación"));
-        setBackground(Color.CYAN);
+        setBackground(Color.decode("#A7643D"));
     }
 
     /**

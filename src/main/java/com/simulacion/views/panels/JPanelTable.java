@@ -22,7 +22,7 @@ public class JPanelTable extends JPanel {
     private void initializeComponents() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBackground(Color.decode("#30373D"));
-        setPreferredSize(new Dimension(500, 570));
+        setPreferredSize(new Dimension(400, 570));
 
         dtmElements = new DefaultTableModel(new String[]{"Xi", "Ri", "Ni"}, 0) {
             @Override
@@ -34,12 +34,16 @@ public class JPanelTable extends JPanel {
         table = new JTable(dtmElements);
         table.setGridColor(Color.decode("#30373D"));
         table.getTableHeader().setReorderingAllowed(false);
-        table.setRowHeight(50);
+        table.setRowHeight(30); // Ajuste de altura de fila
         table.setBackground(Color.WHITE);
+        table.setForeground(Color.BLACK); // Cambio de color del texto
+        table.setFont(table.getFont().deriveFont(14f)); // Ajuste del tamaño de la fuente
         table.setFillsViewportHeight(true);
 
         scroll = new JScrollPane(table);
         scroll.setAlignmentX(CENTER_ALIGNMENT);
+        scroll.getViewport().setBackground(Color.decode("#30373D")); // Cambio de color del fondo de la tabla
+        scroll.setBorder(null); // Eliminación del borde del JScrollPane
 
         add(scroll);
     }

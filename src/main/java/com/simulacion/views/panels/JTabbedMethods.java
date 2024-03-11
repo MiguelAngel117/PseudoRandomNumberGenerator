@@ -1,5 +1,6 @@
 package com.simulacion.views.panels;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class JTabbedMethods extends JTabbedPane {
         uniform = createTablePanel("D. Uniforme", new UniformSection(listener), new String[]{"Ri", "Ni"});
         normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Ri", "Ni"});
         setTabPlacement(JTabbedPane.LEFT);
+        setBackground(Color.decode("#A7643D"));
     }
 
     private JPanelMain createPanel(String title, JPanelSection section) {

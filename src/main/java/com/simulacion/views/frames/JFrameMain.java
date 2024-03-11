@@ -9,8 +9,8 @@ import com.simulacion.views.panels.JTabbedMethods;
 
 public class JFrameMain extends JFrame {
 
-    private static final int WIDTH = 1200;
-    private static final int HEIGHT = 580;
+    private static final int WIDTH = 1270;
+    private static final int HEIGHT = 650;
     private static JTabbedMethods methods;
 
     public JFrameMain(ActionListener listener) {
@@ -19,7 +19,7 @@ public class JFrameMain extends JFrame {
     }
 
     private void initializeFrame() {
-        setTitle("Pseudo-aleatory number Generator");
+        setTitle("Pseudo-aleatory");
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
