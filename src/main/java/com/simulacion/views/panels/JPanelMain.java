@@ -18,7 +18,7 @@ public class JPanelMain extends JPanel{
     }
 
     private void initComponents() {
-        this.add(section, BorderLayout.NORTH);
+        this.add(section, BorderLayout.SOUTH);
 
         table = new JPanelTable();
         this.add(table, BorderLayout.WEST);

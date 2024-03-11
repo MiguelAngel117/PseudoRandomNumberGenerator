@@ -21,6 +21,7 @@ public class JTabbedMethods extends JTabbedPane {
         linear = createPanel("Congruencial Lineal", new LinearSection(listener));
         uniform = createTablePanel("D. Uniforme", new UniformSection(listener), new String[]{"Ri", "Ni"});
         normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Ri", "Ni"});
+        setTabPlacement(JTabbedPane.LEFT);
     }
 
     private JPanelMain createPanel(String title, JPanelSection section) {
