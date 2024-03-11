@@ -8,10 +8,13 @@ import java.util.List;
  */
 public class HalfSquares {
 
+    private int min;
+    private int max;
     private int seed;
     private int digits;
     private int quantity;
-    private List<Double> aleatory;
+    private List<Double> aleatoryRi;
+    private List<Double> aleatoryNi;
     private List<Integer> centers;
 
     /**
@@ -21,12 +24,16 @@ public class HalfSquares {
      * @param digits   Dígitos del Centro
      * @param quantity Cantidad de Números a Generar
      */
-    public HalfSquares(int seed, int digits, int quantity) {
+    public HalfSquares(int seed, int digits, int quantity, int min, int max) {
         this.seed = seed;
         this.digits = digits;
         this.quantity = quantity;
-        this.aleatory = new ArrayList<>();
+        this.min = min;
+        this.max = max;
+        this.aleatoryRi = new ArrayList<>();
+        this.aleatoryNi = new ArrayList<>();
         this.centers = new ArrayList<>();
+        generateRandom(seed);
     }
 
     /**
@@ -35,8 +42,7 @@ public class HalfSquares {
      * @return Lista de números aleatorios
      */
     public List<Double> getAleatory() {
-        generateRandom(this.seed);
-        return aleatory;
+        return aleatoryRi;
     }
 
     /**
@@ -45,11 +51,13 @@ public class HalfSquares {
      * @param seed Semilla para la generación de números aleatorios
      */
     private void generateRandom(int seed) {
-        while (aleatory.size() < quantity) {
+        while (aleatoryRi.size() < quantity) {
             int pow = (int) Math.pow(seed, 2);
             int center = calculateCenter(pow);
             centers.add(seed);
-            aleatory.add(center / Math.pow(10, digits));
+            double ri = center / Math.pow(10, digits);
+            aleatoryRi.add(ri);
+            aleatoryNi.add(min +((max - min))* ri);
             seed = center;
         }
     }
@@ -120,5 +128,9 @@ public class HalfSquares {
      */
     public List<Integer> getCenters() {
         return centers;
+    }
+
+    public List<Double> getNumbersNi() {
+        return aleatoryNi;
     }
 }

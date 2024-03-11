@@ -1,7 +1,6 @@
 package com.simulacion.views.sections;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -49,7 +48,7 @@ public class NormalSection extends JPanelSection {
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
-        button.setActionCommand("NORMAL_DISTRIBUTION");
+        button.setActionCommand("NORMAL");
         return button;
     }
 

@@ -56,7 +56,7 @@ public class HalfSquaresSection extends JPanelSection {
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
-        button.setActionCommand("HALF_SQUARE");
+        button.setActionCommand("HALF");
         return button;
     }
 

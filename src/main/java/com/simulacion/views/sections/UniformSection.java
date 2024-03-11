@@ -46,7 +46,7 @@ public class UniformSection extends JPanelSection {
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
-        button.setActionCommand("UNIFORM_DISTRIBUTION");
+        button.setActionCommand("UNIFORM");
         return button;
     }
 

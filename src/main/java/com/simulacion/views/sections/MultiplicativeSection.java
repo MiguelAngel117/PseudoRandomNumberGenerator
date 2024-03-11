@@ -53,7 +53,7 @@ public class MultiplicativeSection extends JPanelSection {
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
-        button.setActionCommand("CONGRUENCE_MULTIPLICATIVE");
+        button.setActionCommand("MULTIPLICATIVE");
         return button;
     }
 

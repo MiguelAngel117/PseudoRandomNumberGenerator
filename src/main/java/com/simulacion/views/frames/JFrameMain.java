@@ -11,7 +11,7 @@ public class JFrameMain extends JFrame {
 
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 580;
-    private JTabbedMethods methods;
+    private static JTabbedMethods methods;
 
     public JFrameMain(ActionListener listener) {
         initializeFrame();
@@ -32,7 +32,7 @@ public class JFrameMain extends JFrame {
 
     public JPanelSection getHeaderByType(String type) {
         switch (type) {
-            case "MID":
+            case "HALF":
                 return methods.getMidSrtHeader();
             case "LINEAR":
                 return methods.getLinHeader();
@@ -49,7 +49,7 @@ public class JFrameMain extends JFrame {
 
     public void setTableRow(String type, Object[] element) {
         switch (type) {
-            case "MID":
+            case "HALF":
                 methods.setMiddSTableRow(element);
                 break;
             case "LINEAR":
@@ -69,7 +69,7 @@ public class JFrameMain extends JFrame {
 
     public void resetTable(String type) {
         switch (type) {
-            case "MID":
+            case "HALF":
                 methods.resetMiddleTable();
                 break;
             case "LINEAR":

@@ -65,7 +65,7 @@ public class LinearSection extends JPanelSection {
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
-        button.setActionCommand("GENERATE_LINEAS");
+        button.setActionCommand("LINEAR");
         return button;
     }
 
