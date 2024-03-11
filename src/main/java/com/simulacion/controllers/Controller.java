@@ -43,14 +43,14 @@ public class Controller implements ActionListener{
                     JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
-            /*case "LINEAR":
+            case "LINEAR":
                 section = frameMain.getHeaderByType("LINEAR");
                 try {
-                    manageLinear(section);
+                    linearCongruence(section);
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                break;*/
+                break;
             case "MULTIPLICATIVE":
                 section = frameMain.getHeaderByType("MULTIPLICATIVE");
                 try {
@@ -94,14 +94,8 @@ public class Controller implements ActionListener{
     }
 
     public void linearCongruence(JPanelSection section) throws IOException{
-        LinearCongruence congruence = new LinearCongruence(1, 4, 3, 7, 128);
-        for (Double seed : congruence.getAleatory()) {
-            System.out.println(seed);
-        }
-        
-        for (Integer seed : congruence.getSeeds()) {
-            System.out.println(seed);
-        }
+        LinearCongruence congruence = new LinearCongruence(1, 4, 3, 7, 128, 8, 10);
+        FileManager.writeToArchive(congruence.getAleatoryNi(), "files/linearCongruence.csv");
     }
 
     public void multiplicativeCongruence(JPanelSection section) throws IOException{

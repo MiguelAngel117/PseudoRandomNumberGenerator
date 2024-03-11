@@ -10,7 +10,6 @@ public class HalfSquares {
 
     private int min;
     private int max;
-    private int seed;
     private int digits;
     private int quantity;
     private List<Double> aleatoryRi;
@@ -25,7 +24,6 @@ public class HalfSquares {
      * @param quantity Cantidad de Números a Generar
      */
     public HalfSquares(int seed, int digits, int quantity, int min, int max) {
-        this.seed = seed;
         this.digits = digits;
         this.quantity = quantity;
         this.min = min;

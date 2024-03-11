@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.simulacion.models;
 
 
@@ -16,32 +12,35 @@ public class LinearCongruence {
     private static final int DEFAULT_K = 2;
     private static final int DEFAULT_G = 10;
 
-    private int x;
+    private int min;
+    private int max;
     private int a;
     private int c;
     private int m;
     private int quantity;
-    private List<Double> aleatory;
+    private List<Double> aleatoryRi;
+    private List<Double> aleatoryNi;
     private List<Integer> seeds;
 
     /**
      * Constructor para LinearCongruence.
      *
-     * @param x        Valor de X
      * @param k        Valor de K
      * @param c        Valor de C
      * @param g        Valor G
      * @param quantity Cantidad de Números a Generar
      */
-    public LinearCongruence(int x, int k, int c, int g, int quantity) {
-        this.x = x;
+    public LinearCongruence(int seed, int k, int c, int g, int quantity, int min, int max) {
+        this.min = min;
+        this.max = max;
         this.a = 1 + 2 * (k > 0 ? k : DEFAULT_K);
         this.c = c;
         this.m = (int) Math.pow(2, g > 0 ? g : DEFAULT_G);
-        System.out.println(g);
-        this.aleatory = new ArrayList<>();
         this.quantity = (quantity > 0 ? quantity : 1); // Asegurar que quantity sea un número positivo
-        this.seeds = new ArrayList<>();
+        seeds = new ArrayList<>();
+        aleatoryRi = new ArrayList<>();
+        aleatoryNi = new ArrayList<>();
+        generateRandom(calculateSeed(seed));
     }
 
     /**
@@ -49,19 +48,23 @@ public class LinearCongruence {
      *
      * @return Lista de números aleatorios
      */
-    public List<Double> getAleatory() {
-        generateRandom(calculateSeed(this.x));
-        return aleatory;
+    public List<Double> getAleatoryRi() {
+        return aleatoryRi;
     }
 
+    public List<Double> getAleatoryNi() {
+        return aleatoryNi;
+    }
     /**
      * Genera números aleatorios de forma recursiva.
      *
      * @param seed Semilla para la generación de números aleatorios
      */
     private void generateRandom(int seed) {
-        while (aleatory.size() < quantity) {
-            aleatory.add(calculateNumber(seed));
+        while (aleatoryRi.size() < quantity) {
+            double ri = calculateNumber(seed);
+            aleatoryRi.add(ri);
+            aleatoryNi.add(min + (max - min) * ri);
             int newSeed = calculateSeed(seed);
             seeds.add(seed);
             seed = newSeed;
