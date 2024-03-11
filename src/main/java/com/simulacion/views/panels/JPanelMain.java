@@ -31,8 +31,12 @@ public class JPanelMain extends JPanel{
         return section;
     }
 
-     public void setTableRow(Object[] row) {
-        table.addRow(row);
+    public void setTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        table.addRows(xiList,riList,niList);
+    }
+
+    public void setTableRow(List<Double> riList, List<Double> niList) {
+        table.addRows(riList,niList);
     }
 
     public void resetTable() {

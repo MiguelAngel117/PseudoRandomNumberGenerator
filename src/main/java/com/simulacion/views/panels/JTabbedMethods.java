@@ -20,7 +20,7 @@ public class JTabbedMethods extends JTabbedPane {
         multiplicative = createPanel("Congruencial Multiplicativa", new MultiplicativeSection(listener));
         linear = createPanel("Congruencial Lineal", new LinearSection(listener));
         uniform = createTablePanel("D. Uniforme", new UniformSection(listener), new String[]{"Ri", "Ni"});
-        normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Xi", "Ri"});
+        normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Ri", "Ni"});
     }
 
     private JPanelMain createPanel(String title, JPanelSection section) {
@@ -29,9 +29,9 @@ public class JTabbedMethods extends JTabbedPane {
         return panel;
     }
 
-    private JPanelMain createTablePanel(String title, JPanelSection section, String[] headers) {
+    private JPanelMain createTablePanel(String title, JPanelSection section, String[] rows) {
         JPanelMain panel = createPanel(title, section);
-        panel.setTableHeader(headers);
+        panel.setTableHeader(rows);
         return panel;
     }
 
@@ -57,8 +57,8 @@ public class JTabbedMethods extends JTabbedPane {
     }
 
     // Middle
-    public void setMiddSTableRow(Object[] element) {
-        midSquare.setTableRow(element);
+    public void setMiddSTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        midSquare.setTableRow(xiList,riList,niList);
     }
 
     public void resetMiddleTable() {
@@ -82,8 +82,8 @@ public class JTabbedMethods extends JTabbedPane {
         linear.setGraphicData(interval);
     }
 
-    public void setLinearTableRow(Object[] element) {
-        linear.setTableRow(element);
+    public void setLinearTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        linear.setTableRow(xiList,riList,niList);
     }
 
     public void resetLinearTable() {
@@ -103,8 +103,8 @@ public class JTabbedMethods extends JTabbedPane {
         multiplicative.setGraphicData(interval);
     }
 
-    public void setMultiplicativeTableRow(Object[] element) {
-        multiplicative.setTableRow(element);
+    public void setMultiplicativeTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        multiplicative.setTableRow(xiList,riList,niList);
     }
 
     // Uniform
@@ -120,13 +120,13 @@ public class JTabbedMethods extends JTabbedPane {
         uniform.setGraphicData(interval);
     }
 
-    public void setUniformTableRow(Object[] element) {
-        uniform.setTableRow(element);
+    public void setUniformTableRow(List<Double> riList, List<Double> niList) {
+        uniform.setTableRow(riList,niList);
     }
 
     // Normal
-    public void setNormalTableRow(Object[] element) {
-        normal.setTableRow(element);
+    public void setNormalTableRow(List<Double> riList, List<Double> niList) {
+        normal.setTableRow(riList,niList);
     }
 
     public void resetNormalTable() {

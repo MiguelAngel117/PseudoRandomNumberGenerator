@@ -47,22 +47,22 @@ public class JFrameMain extends JFrame {
         }
     }
 
-    public void setTableRow(String type, Object[] element) {
+    public void setTableRow(String type, List<Integer> xiList, List<Double> riList, List<Double> niList) {
         switch (type) {
             case "HALF":
-                methods.setMiddSTableRow(element);
+                methods.setMiddSTableRow(xiList,riList,niList);
                 break;
             case "LINEAR":
-                methods.setLinearTableRow(element);
+                methods.setLinearTableRow(xiList,riList,niList);
                 break;
             case "MULTIPLICATIVE":
-                methods.setMultiplicativeTableRow(element);
+                methods.setMultiplicativeTableRow(xiList,riList,niList);
                 break;
             case "UNIFORM":
-                methods.setUniformTableRow(element);
+                methods.setUniformTableRow(riList,niList);
                 break;
             case "NORMAL":
-                methods.setNormalTableRow(element);
+                methods.setNormalTableRow(riList,niList);
                 break;
         }
     }
@@ -89,7 +89,7 @@ public class JFrameMain extends JFrame {
 
     public void setGraphicData(String type, List<Double> data) {
         switch (type) {
-            case "MID":
+            case "HALF":
                 methods.setGraphicData(data);
                 break;
             case "LINEAR":
@@ -109,7 +109,7 @@ public class JFrameMain extends JFrame {
 
     public void resetGraphic(String type) {
         switch (type) {
-            case "MID":
+            case "HALF":
                 methods.resetMiddleGraphic();
                 break;
             case "LINEAR":

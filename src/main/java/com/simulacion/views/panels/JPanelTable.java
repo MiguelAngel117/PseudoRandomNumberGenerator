@@ -2,6 +2,7 @@ package com.simulacion.views.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -43,8 +44,20 @@ public class JPanelTable extends JPanel {
         add(scroll);
     }
 
-    public void addRow(Object[] row) {
-        dtmElements.addRow(row);
+    public void addRows(List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        int rowCount = Math.min(xiList.size(), Math.min(riList.size(), niList.size()));
+        for (int i = 0; i < rowCount; i++) {
+            Object[] row = {xiList.get(i), riList.get(i), niList.get(i)};
+            dtmElements.addRow(row);
+        }
+    }
+
+    public void addRows(List<Double> riList, List<Double> niList) {
+        int rowCount = Math.min(riList.size(), niList.size());
+        for (int i = 0; i < rowCount; i++) {
+            Object[] row = {riList.get(i), niList.get(i)};
+            dtmElements.addRow(row);
+        }
     }
 
     public void setTableHeader(String[] header) {
