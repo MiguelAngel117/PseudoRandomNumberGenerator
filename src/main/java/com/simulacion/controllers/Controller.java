@@ -35,7 +35,7 @@ public class Controller implements ActionListener{
                 try {
                     halfSquares(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en Metodo de cuadrados medios", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "LINEAR":
@@ -43,7 +43,7 @@ public class Controller implements ActionListener{
                 try {
                     linearCongruence(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en Metodo de Congruencia Lineal", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "MULTIPLICATIVE":
@@ -51,7 +51,7 @@ public class Controller implements ActionListener{
                 try {
                     multiplicativeCongruence(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en Metodo de Congruencia Multiplicativa", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "UNIFORM":
@@ -59,7 +59,7 @@ public class Controller implements ActionListener{
                 try {
                     uniformDistribution(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "DISTRIBICÓN NORMAL", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en Metodo de Distribución uniforme", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "NORMAL":
@@ -68,7 +68,7 @@ public class Controller implements ActionListener{
                 try {
                     normalDistribution(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "App Failure!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en Metodo de Distribución normal", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
         }
