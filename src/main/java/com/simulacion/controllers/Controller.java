@@ -82,29 +82,35 @@ public class Controller implements ActionListener{
 
      // Uniform
     private void uniformDistribution(JPanelSection section) throws IOException {
-        UniformDistri uniform = new UniformDistri(80, 8,20);
+        //UniformDistri uniform = new UniformDistri(80, 8,20);
+
+        UniformDistri uniform = new UniformDistri(section.getQuantity(), section.getMin(),section.getMax());
         System.out.println(uniform.getNumbersNi().toString()); 
-        FileManager.writeToArchive(uniform.getNumbersRi(), "files/uniform.csv");
+        FileManager.writeToArchive(uniform.getNumbersNi(), "files/uniform.csv");
         //manageUniformTable(aleatory, interval);
     }
 
     public void normalDistribution(JPanelSection section) throws IOException{
-        NormalDistri normal = new NormalDistri(100,10,17,15);
+        //NormalDistri normal = new NormalDistri(100,10,17,15);
+        NormalDistri normal = new NormalDistri(section.getQuantity(),section.getMin(),section.getMax(), section.getXi());
         FileManager.writeToArchive(normal.getAleatoryNi(), "files/normal.csv");
     }
 
     public void linearCongruence(JPanelSection section) throws IOException{
-        LinearCongruence congruence = new LinearCongruence(1, 4, 3, 7, 128, 8, 10);
+        //LinearCongruence congruence = new LinearCongruence(1, 4, 3, 7, 128, 8, 10);
+        LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax());
         FileManager.writeToArchive(congruence.getAleatoryNi(), "files/linearCongruence.csv");
     }
 
     public void multiplicativeCongruence(JPanelSection section) throws IOException{
-        MultiplicativeCongruence congruence = new MultiplicativeCongruence(5, 2, 10, 129,8,10);
+        //MultiplicativeCongruence congruence = new MultiplicativeCongruence(5, 2, 10, 129,8,10);
+        MultiplicativeCongruence congruence = new MultiplicativeCongruence(section.getXi(), section.getT(), section.getG(), section.getQuantity(),section.getMin(), section.getMax());
         FileManager.writeToArchive(congruence.getAleatoryNi(), "files/multiCongruence.csv");
     }
 
     public void halfSquares(JPanelSection section) throws IOException{
-        HalfSquares squares = new HalfSquares(3456, 4, 67,2,5);
+        //HalfSquares squares = new HalfSquares(3456, 4, 67,2,5);
+        HalfSquares squares = new HalfSquares(section.getSeed(), section.getDigits(), section.getQuantity(),section.getMin(),section.getMax());
         FileManager.writeToArchive(squares.getNumbersNi(), "files/halfSquares.csv");
     }
 
