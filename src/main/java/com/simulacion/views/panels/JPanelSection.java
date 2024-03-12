@@ -54,4 +54,8 @@ public class JPanelSection extends JPanel {
     public int getT() {
         return 0;
     }
+
+    public boolean getType(){
+        return false;
+    }
 }

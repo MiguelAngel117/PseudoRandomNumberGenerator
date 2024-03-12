@@ -28,7 +28,7 @@ public class MultiplicativeCongruence {
      * @param g        Valor G
      * @param quantity Cantidad de Números a Generar
      */
-    public MultiplicativeCongruence(int seed, int t, int g, int quantity, int min, int max) {
+    public MultiplicativeCongruence(int seed, int t, int g, int quantity, int min, int max, boolean type) {
         this.min = min;
         this.max = max;
         a = 8 * (t > 0 ? t : DEFAULT_T) + 5; //a = 8t +5
@@ -37,7 +37,7 @@ public class MultiplicativeCongruence {
         this.aleatoryNi = new ArrayList<>();
         this.quantity = (quantity > 0 ? quantity : 1); // Asegurar que quantity sea un número positivo
         this.seeds = new ArrayList<>();
-        generateRandom(calculateSeed(seed));
+        generateRandom(calculateSeed(seed), type);
     }
 
     /**
@@ -58,9 +58,9 @@ public class MultiplicativeCongruence {
      *
      * @param seed Semilla para la generación de números aleatorios
      */
-    private void generateRandom(int seed) {
+    private void generateRandom(int seed, boolean type) {
         while (aleatoryRi.size() < quantity) {
-            double ri = calculateNumber(seed);
+            double ri = calculateNumber(seed, type);
             aleatoryRi.add(ri);
             aleatoryNi.add(min + (max - min)*ri);
             int newSeed = calculateSeed(seed);
@@ -75,8 +75,11 @@ public class MultiplicativeCongruence {
      * @param seed Semilla para la generación de números aleatorios
      * @return Número aleatorio normalizado
      */
-    private Double calculateNumber(int seed) {
-        return (double) seed / (m - 1);
+    private Double calculateNumber(int seed, boolean type) { 
+        if(type)
+            return (double) seed / (m - 1);
+        else
+            return (double) seed / (m);
     }
 
     /**

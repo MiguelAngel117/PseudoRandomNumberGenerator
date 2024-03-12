@@ -90,7 +90,7 @@ public class Controller implements ActionListener{
     }
 
     public void linearCongruence(JPanelSection section, String method) throws IOException{
-        LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax());
+        LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax(), section.getType());
         FileManager.writeToArchive(congruence.getAleatoryNi(), "files/linearCongruence.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
@@ -99,7 +99,7 @@ public class Controller implements ActionListener{
     }
 
     public void multiplicativeCongruence(JPanelSection section, String method) throws IOException{
-        MultiplicativeCongruence mCongruence = new MultiplicativeCongruence(section.getXi(), section.getT(), section.getG(), section.getQuantity(),section.getMin(), section.getMax());
+        MultiplicativeCongruence mCongruence = new MultiplicativeCongruence(section.getXi(), section.getT(), section.getG(), section.getQuantity(),section.getMin(), section.getMax(), section.getType());
         FileManager.writeToArchive(mCongruence.getAleatoryNi(), "files/multiCongruence.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);

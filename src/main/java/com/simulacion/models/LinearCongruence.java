@@ -30,7 +30,7 @@ public class LinearCongruence {
      * @param g        Valor G
      * @param quantity Cantidad de Números a Generar
      */
-    public LinearCongruence(int seed, int k, int c, int g, int quantity, int min, int max) {
+    public LinearCongruence(int seed, int k, int c, int g, int quantity, int min, int max, boolean type) {
         this.min = min;
         this.max = max;
         this.a = 1 + 2 * (k > 0 ? k : DEFAULT_K);
@@ -40,7 +40,7 @@ public class LinearCongruence {
         seeds = new ArrayList<>();
         aleatoryRi = new ArrayList<>();
         aleatoryNi = new ArrayList<>();
-        generateRandom(calculateSeed(seed));
+        generateRandom(calculateSeed(seed), type);
     }
 
     /**
@@ -60,9 +60,10 @@ public class LinearCongruence {
      *
      * @param seed Semilla para la generación de números aleatorios
      */
-    private void generateRandom(int seed) {
+    private void generateRandom(int seed, boolean type) {
         while (aleatoryRi.size() < quantity) {
-            double ri = calculateNumber(seed);
+            double ri = calculateNumber(seed, type);
+            System.out.println(ri);
             aleatoryRi.add(ri);
             aleatoryNi.add(min + (max - min) * ri);
             int newSeed = calculateSeed(seed);
@@ -77,8 +78,11 @@ public class LinearCongruence {
      * @param seed Semilla para la generación de números aleatorios
      * @return Número aleatorio normalizado
      */
-    private Double calculateNumber(int seed) {
-        return (double) seed / (m - 1);
+    private Double calculateNumber(int seed, boolean type) { 
+        if(type)
+            return (double) seed / (m - 1);
+        else
+            return (double) seed / (m);
     }
 
     /**

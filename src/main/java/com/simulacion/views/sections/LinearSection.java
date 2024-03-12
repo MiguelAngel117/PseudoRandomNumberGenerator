@@ -83,6 +83,12 @@ public class LinearSection extends JPanelSection {
     }
 
     @Override
+    public boolean getType(){
+        String type = jComboBox.getSelectedItem().toString();
+        return (type.equals("Ri ∈ [0,1]"))? true: false;
+    }
+
+    @Override
     public int getXi() {
         return Integer.parseInt(x.getText());
     }
