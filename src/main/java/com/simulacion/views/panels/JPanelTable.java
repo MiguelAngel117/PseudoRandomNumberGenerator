@@ -64,15 +64,15 @@ public class JPanelTable extends JPanel {
         }
     }
 
-    public void setTableSection(String[] header) {
-        dtmElements.setColumnIdentifiers(header);
+    public void setTableSection(String[]section) {
+        dtmElements.setColumnIdentifiers(section);
     }
 
     public void clearTable() {
-        dtmElements.setRowCount(0);
+        dtmElements.setRowCount(0); 
     }
 
-    public void setHeader(String[] header) {
-        setTableSection(header);
+    public void setHeader(String[] section) {
+        setTableSection(section);
     }
 }

@@ -51,7 +51,7 @@ public class JPanelMain extends JPanel{
         draw.resetDraw();
     }
 
-    public void setTableSection(String[] header) {
-        table.setHeader(header);
+    public void setTableSection(String[]section) {
+        table.setHeader(section);
     }
 }

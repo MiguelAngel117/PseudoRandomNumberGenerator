@@ -38,109 +38,100 @@ public class JTabbedMethods extends JTabbedPane {
         return panel;
     }
 
-
-    public JPanelSection getMidSrtHeader() {
-        return halfSquare.getSection();
+    public JPanelSection getSection(String type) {
+        switch (type) {
+            case "HALF":
+                return halfSquare.getSection();
+            case "LINEAR":
+                return linear.getSection();
+            case "MULTIPLICATIVE":
+                return multiplicative.getSection();
+            case "UNIFORM":
+                return uniform.getSection();
+            case "NORMAL":
+                return normal.getSection();
+            default:
+                return halfSquare.getSection();
+        }
     }
 
-    public JPanelSection getMultHeader() {
-        return multiplicative.getSection();
+    public void setTableRow(String type, List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        switch (type) {
+            case "HALF":
+                halfSquare.setTableRow(xiList,riList,niList);
+                break;
+            case "LINEAR":
+                linear.setTableRow(xiList,riList,niList);
+                break;
+            case "MULTIPLICATIVE":
+                multiplicative.setTableRow(xiList,riList,niList);
+                break;
+            case "UNIFORM":
+                uniform.setTableRow(riList,niList);
+                break;
+            case "NORMAL":
+                normal.setTableRow(riList,niList);
+                break;
+        }
     }
 
-    public JPanelSection getLinHeader() {
-        return linear.getSection();
+    public void resetTable(String type) {
+        switch (type) {
+            case "HALF":
+                halfSquare.resetTable();
+                break;
+            case "LINEAR":
+                linear.resetTable();
+                break;
+            case "MULTIPLICATIVE":
+                multiplicative.resetTable();
+                break;
+            case "UNIFORM":
+                uniform.resetTable();
+                break;
+            case "NORMAL":
+                normal.resetTable();
+                break;
+        }
     }
 
-    public JPanelSection getUniHeader() {
-        return uniform.getSection();
+    public void setDrawData(String type, List<Double> data) {
+        switch (type) {
+            case "HALF":
+                halfSquare.setDrawData(data);
+                break;
+            case "LINEAR":
+                linear.setDrawData(data);
+                break;
+            case "MULTIPLICATIVE":
+                multiplicative.setDrawData(data);
+                break;
+            case "UNIFORM":
+                uniform.setDrawData(data);
+                break;
+            case "NORMAL":
+                normal.setDrawData(data);
+                break;
+        }
     }
 
-    public JPanelSection getNormHeader() {
-        return normal.getSection();
-    }
-
-    // Middle
-    public void setMiddSTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
-        halfSquare.setTableRow(xiList,riList,niList);
-    }
-
-    public void resetMiddleTable() {
-        halfSquare.resetTable();
-    }
-
-    public void setDrawData(List<Double> data) {
-        halfSquare.setDrawData(data);
-    }
-
-    public void resetMiddleGraphic() {
-        halfSquare.resetDraw();
-    }
-
-    // Linear
-    public void resetLinearGraphic() {
-        linear.resetDraw();
-    }
-
-    public void setLinearGraphicData(List<Double> interval) {
-        linear.setDrawData(interval);
-    }
-
-    public void setLinearTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
-        linear.setTableRow(xiList,riList,niList);
-    }
-
-    public void resetLinearTable() {
-        linear.resetTable();
-    }
-
-    // Multiplicative
-    public void resetMultiplicativeTable() {
-        multiplicative.resetTable();
-    }
-
-    public void resetMultiplicativeGraphic() {
-        multiplicative.resetDraw();
-    }
-
-    public void setMultiplicativeGraphicData(List<Double> interval) {
-        multiplicative.setDrawData(interval);
-    }
-
-    public void setMultiplicativeTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
-        multiplicative.setTableRow(xiList,riList,niList);
-    }
-
-    // Uniform
-    public void resetUniformTable() {
-        uniform.resetTable();
-    }
-
-    public void resetUniformGraphic() {
-        uniform.resetDraw();
-    }
-
-    public void setUniformGraphicData(List<Double> interval) {
-        uniform.setDrawData(interval);
-    }
-
-    public void setUniformTableRow(List<Double> riList, List<Double> niList) {
-        uniform.setTableRow(riList,niList);
-    }
-
-    // Normal
-    public void setNormalTableRow(List<Double> riList, List<Double> niList) {
-        normal.setTableRow(riList,niList);
-    }
-
-    public void resetNormalTable() {
-        normal.resetTable();
-    }
-
-    public void resetNormalGraphic() {
-        normal.resetDraw();
-    }
-
-    public void setNormalGraphicData(List<Double> interval) {
-        normal.setDrawData(interval);
+    public void resetDraw(String type) {
+        switch (type) {
+            case "HALF":
+                halfSquare.resetDraw();
+                break;
+            case "LINEAR":
+                linear.resetDraw();
+                break;
+            case "MULTIPLICATIVE":
+                multiplicative.resetDraw();
+                break;
+            case "UNIFORM":
+                uniform.resetDraw();
+                break;
+            case "NORMAL":
+                normal.resetDraw();
+                break;
+        }
     }
 }

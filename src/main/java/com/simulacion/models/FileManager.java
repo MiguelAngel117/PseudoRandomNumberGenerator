@@ -4,21 +4,24 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class FileManager {
 
     /**
-     * 
-     * @param numbers Numeros Aleatorios
-     * @param path Ruta del Archivo
-     * @throws IOException Excepcion si la ruta no existe
+     * Escribe los números en un archivo, separados por punto y coma.
+     * @param numbers Lista de números a escribir en el archivo.
+     * @param filePath Ruta del archivo.
+     * @throws IOException Excepción si hay un error de E/S al escribir en el archivo.
      */
-    public static void writeToArchive(List<Double> numbers, String path) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-        for (Double number : numbers) {
-            writer.write(String.valueOf(number));
-            writer.write(";");
+    public static void writeToArchive(List<Double> numbers, String filePath) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            StringJoiner joiner = new StringJoiner(";");
+            for (Double number : numbers) {
+                joiner.add(String.valueOf(number));
+            }
+            writer.write(joiner.toString());
         }
-        writer.close();
     }
 }
+

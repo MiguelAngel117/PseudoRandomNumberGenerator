@@ -32,101 +32,24 @@ public class JFrameMain extends JFrame {
         add(methods);
     }
 
-    public JPanelSection getHeaderByType(String type) {
-        switch (type) {
-            case "HALF":
-                return methods.getMidSrtHeader();
-            case "LINEAR":
-                return methods.getLinHeader();
-            case "MULTIPLICATIVE":
-                return methods.getMultHeader();
-            case "NORMAL":
-                return methods.getNormHeader();
-            case "UNIFORM":
-                return methods.getUniHeader();
-            default:
-                return null;
-        }
+    public JPanelSection getHeaderByType(String section) {
+        return methods.getSection(section);
     }
 
-    public void setTableRow(String type, List<Integer> xiList, List<Double> riList, List<Double> niList) {
-        switch (type) {
-            case "HALF":
-                methods.setMiddSTableRow(xiList,riList,niList);
-                break;
-            case "LINEAR":
-                methods.setLinearTableRow(xiList,riList,niList);
-                break;
-            case "MULTIPLICATIVE":
-                methods.setMultiplicativeTableRow(xiList,riList,niList);
-                break;
-            case "UNIFORM":
-                methods.setUniformTableRow(riList,niList);
-                break;
-            case "NORMAL":
-                methods.setNormalTableRow(riList,niList);
-                break;
-        }
+    public void setTableRow(String section, List<Integer> xiList, List<Double> riList, List<Double> niList) {
+        methods.setTableRow(section, xiList, riList, niList);
     }
 
-    public void resetTable(String type) {
-        switch (type) {
-            case "HALF":
-                methods.resetMiddleTable();
-                break;
-            case "LINEAR":
-                methods.resetLinearTable();
-                break;
-            case "MULTIPLICATIVE":
-                methods.resetMultiplicativeTable();
-                break;
-            case "UNIFORM":
-                methods.resetUniformTable();
-                break;
-            case "NORMAL":
-                methods.resetNormalTable();
-                break;
-        }
+    public void resetTable(String section) {
+        methods.resetTable(section);
     }
 
-    public void setDrawData(String type, List<Double> data) {
-        switch (type) {
-            case "HALF":
-                methods.setDrawData(data);
-                break;
-            case "LINEAR":
-                methods.setLinearGraphicData(data);
-                break;
-            case "MULTIPLICATIVE":
-                methods.setMultiplicativeGraphicData(data);
-                break;
-            case "UNIFORM":
-                methods.setUniformGraphicData(data);
-                break;
-            case "NORMAL":
-                methods.setNormalGraphicData(data);
-                break;
-        }
+    public void setDrawData(String section, List<Double> data) {
+        methods.setDrawData(section, data);
     }
 
-    public void resetDraw(String type) {
-        switch (type) {
-            case "HALF":
-                methods.resetMiddleGraphic();
-                break;
-            case "LINEAR":
-                methods.resetLinearGraphic();
-                break;
-            case "MULTIPLICATIVE":
-                methods.resetMultiplicativeGraphic();
-                break;
-            case "UNIFORM":
-                methods.resetUniformGraphic();
-                break;
-            case "NORMAL":
-                methods.resetNormalGraphic();
-                break;
-        }
+    public void resetDraw(String section) {
+        methods.resetDraw(section);
     }
 
     public void printMessage(String message) {

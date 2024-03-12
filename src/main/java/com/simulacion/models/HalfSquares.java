@@ -17,7 +17,7 @@ public class HalfSquares {
     private List<Integer> centers;
 
     /**
-     * Constructor para MiddleSquare.
+     * Constructor para HalfSquare.
      *
      * @param seed     Semilla Inicial
      * @param digits   Dígitos del Centro
