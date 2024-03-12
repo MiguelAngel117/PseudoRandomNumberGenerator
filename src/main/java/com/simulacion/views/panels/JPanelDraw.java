@@ -20,15 +20,14 @@ public class JPanelDraw extends JPanel {
 
     public JPanelDraw() {
         this.setBackground(Color.WHITE);
+        initializeChart(); // Inicializa el gráfico con una serie vacía al crear el panel.
     }
 
-    public void setData(List<Double> ni) {
+    private void initializeChart() {
         dataset = new XYSeriesCollection();
         series = new XYSeries("Ni");
         index = 0;
-        for (Double data : ni) {
-            series.add(index++, data);
-        }
+
         dataset.addSeries(series);
 
         chart = ChartFactory.createScatterPlot("Diagrama de Dispersión", "", "Ni", dataset, PlotOrientation.VERTICAL,
@@ -42,7 +41,18 @@ public class JPanelDraw extends JPanel {
         panel.updateUI();
     }
 
+    public void setData(List<Double> ni) {
+        series.clear(); // Limpia la serie antes de agregar nuevos datos.
+
+        for (Double data : ni) {
+            series.add(index++, data);
+        }
+
+        chart.fireChartChanged(); // Notifica al gráfico sobre los cambios en los datos.
+    }
+
     public void resetDraw() {
-        this.removeAll();
+        series.clear(); // Limpia la serie cuando se reinicia el dibujo.
+        chart.fireChartChanged(); // Notifica al gráfico sobre los cambios en los datos.
     }
 }
