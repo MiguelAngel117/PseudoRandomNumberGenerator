@@ -3,7 +3,7 @@ package com.simulacion.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import com.simulacion.models.*;
 import com.simulacion.views.frames.JFrameMain;
@@ -73,7 +73,7 @@ public class Controller implements ActionListener{
     private void uniformDistribution(JPanelSection section, String method) throws IOException {
         UniformDistri uniform = new UniformDistri(section.getQuantity(), section.getMin(),section.getMax());
         System.out.println(uniform.getNumbersNi().toString()); 
-        FileManager.writeToArchive(uniform.getNumbersNi(), "files/uniform.csv");
+        FileManager.writeToArchive(uniform.getNumbersRi(), "files/uniform.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setDrawData(method, uniform.getNumbersNi());
@@ -82,7 +82,7 @@ public class Controller implements ActionListener{
 
     public void normalDistribution(JPanelSection section, String method) throws IOException{
         NormalDistri normal = new NormalDistri(section.getQuantity(),section.getMin(),section.getMax(), section.getXi());
-        FileManager.writeToArchive(normal.getAleatoryNi(), "files/normal.csv");
+        FileManager.writeToArchive(normal.getAleatoryRi(), "files/normal.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setDrawData(method, normal.getAleatoryNi());
@@ -91,7 +91,7 @@ public class Controller implements ActionListener{
 
     public void linearCongruence(JPanelSection section, String method) throws IOException{
         LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax(), section.getType());
-        FileManager.writeToArchive(congruence.getAleatoryNi(), "files/linearCongruence.csv");
+        FileManager.writeToArchive(congruence.getAleatoryRi(), "files/linearCongruence.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setDrawData(method, congruence.getAleatoryNi());
@@ -100,7 +100,7 @@ public class Controller implements ActionListener{
 
     public void multiplicativeCongruence(JPanelSection section, String method) throws IOException{
         MultiplicativeCongruence mCongruence = new MultiplicativeCongruence(section.getXi(), section.getT(), section.getG(), section.getQuantity(),section.getMin(), section.getMax(), section.getType());
-        FileManager.writeToArchive(mCongruence.getAleatoryNi(), "files/multiCongruence.csv");
+        FileManager.writeToArchive(mCongruence.getAleatoryRi(), "files/multiCongruence.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setDrawData(method, mCongruence.getAleatoryNi());
@@ -111,7 +111,7 @@ public class Controller implements ActionListener{
         String length = section.getSeed() + "";
         if(length.length() == section.getDigits()){
             HalfSquares squares = new HalfSquares(section.getSeed(), section.getDigits(), section.getQuantity(),section.getMin(),section.getMax());
-            FileManager.writeToArchive(squares.getNumbersNi(), "files/halfSquares.csv");
+            FileManager.writeToArchive(squares.getAleatory(), "files/halfSquares.csv");
             frameMain.resetTable(method);
             frameMain.resetDraw(method);
             frameMain.setDrawData(method, squares.getNumbersNi());

@@ -4,7 +4,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -16,43 +15,56 @@ import com.simulacion.views.panels.JPanelSection;
  * Clase que representa una sección para la generación de números mediante congruencia multiplicativa.
  */
 public class MultiplicativeSection extends JPanelSection {
-    private final JTextField x;
-    private final JTextField t;
-    private final JTextField g;
-    private final JSpinner max;
-    private final JSpinner min;
-    private final JTextField quantity;
-    private final JButton button;
-    private final JComboBox jComboBox;
+    // Declaración de campos
+    private final JTextField x; // Campo para el valor de X
+    private final JTextField t; // Campo para el valor de T
+    private final JTextField g; // Campo para el valor de G
+    private final JTextField max; // Selector para el valor máximo
+    private final JTextField min; // Selector para el valor mínimo
+    private final JTextField quantity; // Campo para la cantidad de números a generar
+    private final JButton button; // Botón para generar números
+    private final JComboBox jComboBox; // ComboBox para opciones
 
+    /**
+     * Constructor de la clase.
+     * @param listener ActionListener para manejar eventos.
+     */
     public MultiplicativeSection(ActionListener listener) {
-        x = createTextField("Valor de X");
-        t = createTextField("Valor de T");
-        g = createTextField("Valor de G");
-        max = createSpinner("Maximo", 1);
-        min = createSpinner("Minimo", 0);
-        quantity = createTextField("Cantidad");
+        // Inicialización de campos
+        x = createTextField("Valor de X", "0");
+        t = createTextField("Valor de T", "0");
+        g = createTextField("Valor de G","0");
+        max = createTextField("Máximo", "1");
+        min = createTextField("Minimo", "0");
+        quantity = createTextField("Cantidad", "0");
         jComboBox = createJComboBox(listener);
         button = createGenerateButton("Generar Numeros", listener);
         
+        // Configuración del diseño de la sección
         setLayout(new GridLayout(2, 4, 5, 2));
-        initComponents();
+        initComponents(); // Inicialización de componentes
     }
 
-    private JTextField createTextField(String title) {
-        JTextField textField = new JTextField("0");
+    /**
+     * Método privado para crear un campo de texto con un borde titulado y un valor inicial especificado.
+     * 
+     * @param title Título del borde.
+     * @param initialValue Valor inicial del campo de texto.
+     * @return Campo de texto creado.
+     */
+    private JTextField createTextField(String title, String initialValue) {
+        JTextField textField = new JTextField(); // Crea un nuevo campo de texto
         textField.setBorder(BorderFactory.createTitledBorder(title));
+        textField.setText(initialValue); // Establece el valor inicial del campo de texto
         return textField;
     }
 
-    private JSpinner createSpinner(String title, int initialValue) {
-        JSpinner spinner = new JSpinner();
-        spinner.setBorder(BorderFactory.createTitledBorder(title));
-        spinner.setBackground(Color.WHITE);
-        spinner.setValue(initialValue);
-        return spinner;
-    }
-
+    /**
+     * Método para crear un botón de generación.
+     * @param label Texto del botón.
+     * @param listener ActionListener para manejar eventos del botón.
+     * @return JButton creado.
+     */
     private JButton createGenerateButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
@@ -60,6 +72,11 @@ public class MultiplicativeSection extends JPanelSection {
         return button;
     }
 
+    /**
+     * Método para crear un ComboBox con opciones.
+     * @param listener ActionListener para manejar eventos del ComboBox.
+     * @return JComboBox creado.
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private JComboBox createJComboBox(ActionListener listener) {
         JComboBox comboBox = new JComboBox();
@@ -70,6 +87,9 @@ public class MultiplicativeSection extends JPanelSection {
         return comboBox;
     }
 
+    /**
+     * Método para inicializar los componentes y añadirlos al panel.
+     */
     private void initComponents() {
         add(x);
         add(t);
@@ -80,6 +100,8 @@ public class MultiplicativeSection extends JPanelSection {
         add(min);
         add(button);
     }
+
+    // Métodos de acceso para obtener los valores de los campos
 
     @Override
     public boolean getType(){
@@ -109,11 +131,11 @@ public class MultiplicativeSection extends JPanelSection {
 
     @Override
     public int getMax() {
-        return (int) max.getValue();
+        return Integer.parseInt(max.getText()); // Devuelve el valor entero del selector del valor máximo
     }
 
     @Override
     public int getMin() {
-        return (int) min.getValue();
+        return Integer.parseInt(min.getText()); // Devuelve el valor entero del selector del valor mínimo
     }
 }

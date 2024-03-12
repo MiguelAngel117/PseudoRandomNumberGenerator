@@ -57,9 +57,10 @@ public class NormalDistri {
      */
     private void generateRandomXi() {
         Random random = new Random();
+        ReduceLinear linearR = new ReduceLinear();
         for (int i = 0; i < quantityXi; i++) {
             int randomValue = random.nextInt((max - min) + 1) + min;
-            double xi = randomValue + Math.random();
+            double xi = randomValue + linearR.generateRi();
             aleatoryNumbersXi.add(xi);
         }
     }
@@ -68,9 +69,8 @@ public class NormalDistri {
      * Genera números aleatorios y los agrega a la lista Ri.
      */
     private void generateRandomRi() {
-        for (int i = 0; i < quantity; i++) {
-            aleatoryNumbersRi.add(Math.random());
-        }
+        ReduceLinear linear = new ReduceLinear(quantity);
+        aleatoryNumbersRi = linear.getListRi();
     }
 
     /**

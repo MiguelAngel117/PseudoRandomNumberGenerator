@@ -11,7 +11,7 @@ public class JPanelSection extends JPanel {
     }
 
     private void initializePanel() {
-        setBorder(BorderFactory.createTitledBorder("Metodos de Generación"));
+        setBorder(BorderFactory.createTitledBorder("Parametros del metodo: "));
         setBackground(Color.decode("#A7643D"));
     }
 

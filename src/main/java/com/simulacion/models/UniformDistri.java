@@ -1,7 +1,6 @@
 package com.simulacion.models;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Clase que representa una distribución uniforme.
@@ -34,14 +33,8 @@ public class UniformDistri {
      * @return Lista de números aleatorios Ri.
      */
     private List<Double> generateNumbersRi() {
-        List<Double> numbersRi = new ArrayList<>(quantity);
-        Random random = new Random();
-
-        for (int i = 0; i < quantity; i++) {
-            numbersRi.add(random.nextDouble());
-        }
-
-        return numbersRi;
+        ReduceLinear random = new ReduceLinear(quantity);
+        return random.getListRi();
     }
 
     /**
