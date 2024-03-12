@@ -18,21 +18,21 @@ public class NormalSection extends JPanelSection {
     private final JTextField sampleQuantity;
     private final JSpinner max;
     private final JSpinner min;
-    private final JButton generate;
+    private final JButton button;
 
     public NormalSection(ActionListener listener) {
         quantity = createTextField("Cantidad de Numeros");
         sampleQuantity = createTextField("Cantidad de Xo");
         max = createSpinner("Maximo", 1);
         min = createSpinner("Minimo", 0);
-        generate = createGenerateButton("Generar Numeros", listener);
+        button = createGenerateButton("Generar Numeros", listener);
 
         setLayout(new GridLayout(2, 2, 5, 2));
         initComponents();
     }
 
     private JTextField createTextField(String title) {
-        JTextField textField = new JTextField();
+        JTextField textField = new JTextField("0");
         textField.setBorder(BorderFactory.createTitledBorder(title));
         return textField;
     }
@@ -55,9 +55,9 @@ public class NormalSection extends JPanelSection {
     private void initComponents() {
         add(sampleQuantity);
         add(max);
+        add(button);
         add(quantity);
         add(min);
-        add(generate);
     }
 
     @Override

@@ -17,20 +17,20 @@ public class UniformSection extends JPanelSection {
     private final JTextField quantity;
     private final JSpinner max;
     private final JSpinner min;
-    private final JButton generate;
+    private final JButton button;
 
     public UniformSection(ActionListener listener) {
         quantity = createTextField("Cantidad");
         max = createSpinner("Maximo", 1);
         min = createSpinner("Minimo", 0);
-        generate = createGenerateButton("Generar Numeros", listener);
+        button = createGenerateButton("Generar Numeros", listener);
 
         setLayout(new GridLayout(2, 2, 5, 2));
         initComponents();
     }
 
     private JTextField createTextField(String title) {
-        JTextField textField = new JTextField();
+        JTextField textField = new JTextField("0");
         textField.setBorder(BorderFactory.createTitledBorder(title));
         return textField;
     }
@@ -54,7 +54,7 @@ public class UniformSection extends JPanelSection {
         add(max);
         add(quantity);
         add(min);
-        add(generate);
+        add(button);
     }
 
     @Override

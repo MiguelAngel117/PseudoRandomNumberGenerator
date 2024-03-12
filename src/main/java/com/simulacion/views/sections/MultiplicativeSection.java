@@ -3,6 +3,7 @@ package com.simulacion.views.sections;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -21,7 +22,8 @@ public class MultiplicativeSection extends JPanelSection {
     private final JSpinner max;
     private final JSpinner min;
     private final JTextField quantity;
-    private final JButton generate;
+    private final JButton button;
+    private final JComboBox jComboBox;
 
     public MultiplicativeSection(ActionListener listener) {
         x = createTextField("Valor de X");
@@ -30,14 +32,15 @@ public class MultiplicativeSection extends JPanelSection {
         max = createSpinner("Maximo", 1);
         min = createSpinner("Minimo", 0);
         quantity = createTextField("Cantidad");
-        generate = createGenerateButton("Generar Numeros", listener);
-
+        jComboBox = createJComboBox(listener);
+        button = createGenerateButton("Generar Numeros", listener);
+        
         setLayout(new GridLayout(2, 4, 5, 2));
         initComponents();
     }
 
     private JTextField createTextField(String title) {
-        JTextField textField = new JTextField();
+        JTextField textField = new JTextField("0");
         textField.setBorder(BorderFactory.createTitledBorder(title));
         return textField;
     }
@@ -57,15 +60,25 @@ public class MultiplicativeSection extends JPanelSection {
         return button;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private JComboBox createJComboBox(ActionListener listener) {
+        JComboBox comboBox = new JComboBox();
+        comboBox.addActionListener(listener);
+        comboBox.addItem("Ri ∈ [0,1]");
+        comboBox.addItem("Ri ∈ [0,1)");
+        comboBox.setActionCommand("OPTIONM");
+        return comboBox;
+    }
+
     private void initComponents() {
         add(x);
         add(t);
         add(max);
-        add(Box.createGlue());
-        add(g);
+        add(jComboBox);
         add(quantity);
+        add(g);
         add(min);
-        add(generate);
+        add(button);
     }
 
     @Override

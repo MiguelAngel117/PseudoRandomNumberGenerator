@@ -7,7 +7,6 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import com.simulacion.views.panels.JPanelSection;
 
@@ -20,7 +19,7 @@ public class HalfSquaresSection extends JPanelSection {
     private final JSpinner max;
     private final JSpinner min;
     private final JTextField quantity;
-    private final JButton generate;
+    private final JButton button;
 
     public HalfSquaresSection(ActionListener listener){
         seed = createTextField("Semilla");
@@ -28,14 +27,14 @@ public class HalfSquaresSection extends JPanelSection {
         max = createSpinner("Maximo", 1);
         min = createSpinner("Minimo", 0);
         quantity = createTextField("Cantidad");
-        generate = createGenerateButton("Generar Numeros", listener);
+        button = createGenerateButton("Generar Numeros", listener);
 
         setLayout(new GridLayout(2, 3, 5, 2));
         initComponents();
     }
 
     private JTextField createTextField(String title) {
-        JTextField textField = new JTextField();
+        JTextField textField = new JTextField("0");
         textField.setBorder(BorderFactory.createTitledBorder(title));
         return textField;
     }
@@ -67,7 +66,7 @@ public class HalfSquaresSection extends JPanelSection {
         add(digits);
         add(quantity);
         add(min);
-        add(generate);
+        add(button);
     }
 
     @Override
