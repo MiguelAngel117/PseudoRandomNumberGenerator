@@ -10,16 +10,16 @@ import com.simulacion.views.sections.*;
 
 public class JTabbedMethods extends JTabbedPane {
 
-    private final JPanelMain midSquare;
+    private final JPanelMain halfSquare;
     private final JPanelMain multiplicative;
     private final JPanelMain linear;
     private final JPanelMain uniform;
     private final JPanelMain normal;
 
     public JTabbedMethods(ActionListener listener) {
-        midSquare = createPanel("Cuadrados Medios", new HalfSquaresSection(listener));
-        multiplicative = createPanel("Congruencial Multiplicativa", new MultiplicativeSection(listener));
         linear = createPanel("Congruencial Lineal", new LinearSection(listener));
+        multiplicative = createPanel("Congruencial Multiplicativa", new MultiplicativeSection(listener));
+        halfSquare = createPanel("Cuadrados Medios", new HalfSquaresSection(listener));
         uniform = createTablePanel("D. Uniforme", new UniformSection(listener), new String[]{"Ri", "Ni"});
         normal = createTablePanel("D. Normal", new NormalSection(listener), new String[]{"Ri", "Ni"});
         setTabPlacement(JTabbedPane.LEFT);
@@ -40,7 +40,7 @@ public class JTabbedMethods extends JTabbedPane {
 
 
     public JPanelSection getMidSrtHeader() {
-        return midSquare.getSection();
+        return halfSquare.getSection();
     }
 
     public JPanelSection getMultHeader() {
@@ -61,19 +61,19 @@ public class JTabbedMethods extends JTabbedPane {
 
     // Middle
     public void setMiddSTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
-        midSquare.setTableRow(xiList,riList,niList);
+        halfSquare.setTableRow(xiList,riList,niList);
     }
 
     public void resetMiddleTable() {
-        midSquare.resetTable();
+        halfSquare.resetTable();
     }
 
     public void setDrawData(List<Double> data) {
-        midSquare.setDrawData(data);
+        halfSquare.setDrawData(data);
     }
 
     public void resetMiddleGraphic() {
-        midSquare.resetDraw();
+        halfSquare.resetDraw();
     }
 
     // Linear
