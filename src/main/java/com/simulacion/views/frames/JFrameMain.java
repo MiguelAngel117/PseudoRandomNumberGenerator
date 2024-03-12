@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import com.simulacion.views.panels.JPanelSection;
 import com.simulacion.views.panels.JTabbedMethods;
 
@@ -87,10 +89,10 @@ public class JFrameMain extends JFrame {
         }
     }
 
-    public void setGraphicData(String type, List<Double> data) {
+    public void setDrawData(String type, List<Double> data) {
         switch (type) {
             case "HALF":
-                methods.setGraphicData(data);
+                methods.setDrawData(data);
                 break;
             case "LINEAR":
                 methods.setLinearGraphicData(data);
@@ -107,7 +109,7 @@ public class JFrameMain extends JFrame {
         }
     }
 
-    public void resetGraphic(String type) {
+    public void resetDraw(String type) {
         switch (type) {
             case "HALF":
                 methods.resetMiddleGraphic();
@@ -125,5 +127,9 @@ public class JFrameMain extends JFrame {
                 methods.resetNormalGraphic();
                 break;
         }
+    }
+
+    public void printMessage(String message) {
+        JOptionPane.showMessageDialog(null, message, "Aviso", JOptionPane.INFORMATION_MESSAGE);
     }
 }

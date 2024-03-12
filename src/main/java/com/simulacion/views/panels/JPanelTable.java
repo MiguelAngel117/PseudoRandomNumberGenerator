@@ -64,7 +64,7 @@ public class JPanelTable extends JPanel {
         }
     }
 
-    public void setTableHeader(String[] header) {
+    public void setTableSection(String[] header) {
         dtmElements.setColumnIdentifiers(header);
     }
 
@@ -73,6 +73,6 @@ public class JPanelTable extends JPanel {
     }
 
     public void setHeader(String[] header) {
-        setTableHeader(header);
+        setTableSection(header);
     }
 }

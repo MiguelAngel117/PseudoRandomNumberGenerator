@@ -4,11 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 
 import com.simulacion.models.*;
-import com.simulacion.utils.FileManager;
 import com.simulacion.views.frames.JFrameMain;
 import com.simulacion.views.panels.JPanelSection;
 
@@ -28,14 +25,13 @@ public class Controller implements ActionListener{
     }
     
     public void getMethod(String method){
-        System.out.println(method + "----->");
         switch (method) {
             case "HALF":
                 section = frameMain.getHeaderByType(method);
                 try {
                     halfSquares(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Error en Metodo de cuadrados medios", "Error", JOptionPane.ERROR_MESSAGE);
+                    frameMain.printMessage("Error en Metodo de cuadrados medios");
                 }
                 break;
             case "LINEAR":
@@ -43,7 +39,7 @@ public class Controller implements ActionListener{
                 try {
                     linearCongruence(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Error en Metodo de Congruencia Lineal", "Error", JOptionPane.ERROR_MESSAGE);
+                    frameMain.printMessage("Error en Metodo de Congruencia Lineal");
                 }
                 break;
             case "MULTIPLICATIVE":
@@ -51,7 +47,7 @@ public class Controller implements ActionListener{
                 try {
                     multiplicativeCongruence(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Error en Metodo de Congruencia Multiplicativa", "Error", JOptionPane.ERROR_MESSAGE);
+                    frameMain.printMessage("Error en Metodo de Congruencia Multiplicativa");
                 }
                 break;
             case "UNIFORM":
@@ -59,7 +55,7 @@ public class Controller implements ActionListener{
                 try {
                     uniformDistribution(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Error en Metodo de Distribución uniforme", "Error", JOptionPane.ERROR_MESSAGE);
+                    frameMain.printMessage("Error en Metodo de Distribución uniforme");
                 }
                 break;
             case "NORMAL":
@@ -67,7 +63,7 @@ public class Controller implements ActionListener{
                 try {
                     normalDistribution(section, method);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Error en Metodo de Distribución normal", "Error", JOptionPane.ERROR_MESSAGE);
+                    frameMain.printMessage("Error en Metodo de Distribución normal");
                 }
                 break;
         }
@@ -79,8 +75,8 @@ public class Controller implements ActionListener{
         System.out.println(uniform.getNumbersNi().toString()); 
         FileManager.writeToArchive(uniform.getNumbersNi(), "files/uniform.csv");
         frameMain.resetTable(method);
-        frameMain.resetGraphic(method);
-        frameMain.setGraphicData(method, uniform.getNumbersNi());
+        frameMain.resetDraw(method);
+        frameMain.setDrawData(method, uniform.getNumbersNi());
         frameMain.setTableRow(method,null,uniform.getNumbersRi(), uniform.getNumbersNi());
     }
 
@@ -88,8 +84,8 @@ public class Controller implements ActionListener{
         NormalDistri normal = new NormalDistri(section.getQuantity(),section.getMin(),section.getMax(), section.getXi());
         FileManager.writeToArchive(normal.getAleatoryNi(), "files/normal.csv");
         frameMain.resetTable(method);
-        frameMain.resetGraphic(method);
-        frameMain.setGraphicData(method, normal.getAleatoryNi());
+        frameMain.resetDraw(method);
+        frameMain.setDrawData(method, normal.getAleatoryNi());
         frameMain.setTableRow(method,null,normal.getAleatoryRi(), normal.getAleatoryNi());
     }
 
@@ -97,8 +93,8 @@ public class Controller implements ActionListener{
         LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax());
         FileManager.writeToArchive(congruence.getAleatoryNi(), "files/linearCongruence.csv");
         frameMain.resetTable(method);
-        frameMain.resetGraphic(method);
-        frameMain.setGraphicData(method, congruence.getAleatoryNi());
+        frameMain.resetDraw(method);
+        frameMain.setDrawData(method, congruence.getAleatoryNi());
         frameMain.setTableRow(method,congruence.getSeeds(),congruence.getAleatoryRi(), congruence.getAleatoryNi());
     }
 
@@ -106,17 +102,22 @@ public class Controller implements ActionListener{
         MultiplicativeCongruence mCongruence = new MultiplicativeCongruence(section.getXi(), section.getT(), section.getG(), section.getQuantity(),section.getMin(), section.getMax());
         FileManager.writeToArchive(mCongruence.getAleatoryNi(), "files/multiCongruence.csv");
         frameMain.resetTable(method);
-        frameMain.resetGraphic(method);
-        frameMain.setGraphicData(method, mCongruence.getAleatoryNi());
+        frameMain.resetDraw(method);
+        frameMain.setDrawData(method, mCongruence.getAleatoryNi());
         frameMain.setTableRow(method,mCongruence.getSeeds(),mCongruence.getAleatoryRi(), mCongruence.getAleatoryNi());
     }
 
     public void halfSquares(JPanelSection section, String method) throws IOException{
-        HalfSquares squares = new HalfSquares(section.getSeed(), section.getDigits(), section.getQuantity(),section.getMin(),section.getMax());
-        FileManager.writeToArchive(squares.getNumbersNi(), "files/halfSquares.csv");
-        frameMain.resetTable(method);
-        frameMain.resetGraphic(method);
-        frameMain.setGraphicData(method, squares.getNumbersNi());
-        frameMain.setTableRow(method,squares.getCenters(),squares.getAleatory(),squares.getNumbersNi());
+        String length = section.getSeed() + "";
+        if(length.length() == section.getDigits()){
+            HalfSquares squares = new HalfSquares(section.getSeed(), section.getDigits(), section.getQuantity(),section.getMin(),section.getMax());
+            FileManager.writeToArchive(squares.getNumbersNi(), "files/halfSquares.csv");
+            frameMain.resetTable(method);
+            frameMain.resetDraw(method);
+            frameMain.setDrawData(method, squares.getNumbersNi());
+            frameMain.setTableRow(method,squares.getCenters(),squares.getAleatory(),squares.getNumbersNi());
+        }else{
+            frameMain.printMessage("La semilla inicial debe tener la misma cantidad de digitos que solicitó");
+        }        
     }
 }

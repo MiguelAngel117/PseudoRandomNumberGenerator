@@ -34,7 +34,7 @@ public class JTabbedMethods extends JTabbedPane {
 
     private JPanelMain createTablePanel(String title, JPanelSection section, String[] rows) {
         JPanelMain panel = createPanel(title, section);
-        panel.setTableHeader(rows);
+        panel.setTableSection(rows);
         return panel;
     }
 
@@ -68,21 +68,21 @@ public class JTabbedMethods extends JTabbedPane {
         midSquare.resetTable();
     }
 
-    public void setGraphicData(List<Double> data) {
-        midSquare.setGraphicData(data);
+    public void setDrawData(List<Double> data) {
+        midSquare.setDrawData(data);
     }
 
     public void resetMiddleGraphic() {
-        midSquare.resetGraphic();
+        midSquare.resetDraw();
     }
 
     // Linear
     public void resetLinearGraphic() {
-        linear.resetGraphic();
+        linear.resetDraw();
     }
 
     public void setLinearGraphicData(List<Double> interval) {
-        linear.setGraphicData(interval);
+        linear.setDrawData(interval);
     }
 
     public void setLinearTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
@@ -99,11 +99,11 @@ public class JTabbedMethods extends JTabbedPane {
     }
 
     public void resetMultiplicativeGraphic() {
-        multiplicative.resetGraphic();
+        multiplicative.resetDraw();
     }
 
     public void setMultiplicativeGraphicData(List<Double> interval) {
-        multiplicative.setGraphicData(interval);
+        multiplicative.setDrawData(interval);
     }
 
     public void setMultiplicativeTableRow(List<Integer> xiList, List<Double> riList, List<Double> niList) {
@@ -116,11 +116,11 @@ public class JTabbedMethods extends JTabbedPane {
     }
 
     public void resetUniformGraphic() {
-        uniform.resetGraphic();
+        uniform.resetDraw();
     }
 
     public void setUniformGraphicData(List<Double> interval) {
-        uniform.setGraphicData(interval);
+        uniform.setDrawData(interval);
     }
 
     public void setUniformTableRow(List<Double> riList, List<Double> niList) {
@@ -137,10 +137,10 @@ public class JTabbedMethods extends JTabbedPane {
     }
 
     public void resetNormalGraphic() {
-        normal.resetGraphic();
+        normal.resetDraw();
     }
 
     public void setNormalGraphicData(List<Double> interval) {
-        normal.setGraphicData(interval);
+        normal.setDrawData(interval);
     }
 }

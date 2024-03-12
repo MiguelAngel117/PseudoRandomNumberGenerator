@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import com.simulacion.views.panels.JPanelSection;
 
@@ -21,9 +22,9 @@ public class HalfSquaresSection extends JPanelSection {
     private final JTextField quantity;
     private final JButton generate;
 
-    public HalfSquaresSection(ActionListener listener) {
+    public HalfSquaresSection(ActionListener listener){
         seed = createTextField("Semilla");
-        digits = createTextField("Digitos", "4");
+        digits = createTextField("Digitos Para Extracción", "4");
         max = createSpinner("Maximo", 1);
         min = createSpinner("Minimo", 0);
         quantity = createTextField("Cantidad");

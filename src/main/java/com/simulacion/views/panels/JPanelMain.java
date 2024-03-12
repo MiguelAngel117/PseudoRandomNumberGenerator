@@ -43,15 +43,15 @@ public class JPanelMain extends JPanel{
         table.clearTable();
     }
 
-    public void setGraphicData(List<Double> data) {
+    public void setDrawData(List<Double> data) {
         draw.setData(data);
     }
 
-    public void resetGraphic() {
-        draw.resetGraphic();
+    public void resetDraw() {
+        draw.resetDraw();
     }
 
-    public void setTableHeader(String[] header) {
+    public void setTableSection(String[] header) {
         table.setHeader(header);
     }
 }

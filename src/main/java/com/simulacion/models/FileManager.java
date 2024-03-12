@@ -1,4 +1,4 @@
-package com.simulacion.utils;
+package com.simulacion.models;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

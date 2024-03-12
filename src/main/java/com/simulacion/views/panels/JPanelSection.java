@@ -15,10 +15,6 @@ public class JPanelSection extends JPanel {
         setBackground(Color.decode("#A7643D"));
     }
 
-    /**
-     * Métodos para obtener valores predeterminados.
-     */
-
     public int getSeed() {
         return 0;
     }
