@@ -21,13 +21,20 @@ public class Controller implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        getMethod(e.getActionCommand().toString());
+        new Thread(() -> {
+            try {
+                generateNumbers(e.getActionCommand());
+            } catch (Exception et) {
+                System.out.println("Se está creando el Frame");
+            }
+            
+        }).start();
     }
     
-    public void getMethod(String method){
+    public void generateNumbers(String method){
+        section = frameMain.getHeaderByType(method);
         switch (method) {
             case "HALF":
-                section = frameMain.getHeaderByType(method);
                 try {
                     halfSquares(section, method);
                 } catch (IOException e1) {
@@ -35,7 +42,6 @@ public class Controller implements ActionListener{
                 }
                 break;
             case "LINEAR":
-                section = frameMain.getHeaderByType(method);
                 try {
                     linearCongruence(section, method);
                 } catch (IOException e1) {
@@ -43,7 +49,6 @@ public class Controller implements ActionListener{
                 }
                 break;
             case "MULTIPLICATIVE":
-                section = frameMain.getHeaderByType(method);
                 try {
                     multiplicativeCongruence(section, method);
                 } catch (IOException e1) {
@@ -51,7 +56,6 @@ public class Controller implements ActionListener{
                 }
                 break;
             case "UNIFORM":
-                section = frameMain.getHeaderByType(method);
                 try {
                     uniformDistribution(section, method);
                 } catch (IOException e1) {
@@ -59,7 +63,6 @@ public class Controller implements ActionListener{
                 }
                 break;
             case "NORMAL":
-                section = frameMain.getHeaderByType("NORMAL");
                 try {
                     normalDistribution(section, method);
                 } catch (IOException e1) {
