@@ -85,8 +85,8 @@ public class JFrameMain extends JFrame {
      * @param section Tipo de método.
      * @param data Lista de datos de dispersión.
      */
-    public void setDrawData(String section, List<Double> data) {
-        methods.setDrawData(section, data); // Establece datos en el gráfico del método especificado
+    public void setDrawData(String section, List<Double> data, Double min, Double max) {
+        methods.setDrawData(section, data,min,max); // Establece datos en el gráfico del método especificado
     }
 
     /**
