@@ -79,7 +79,7 @@ public class JPanelMain extends JPanel{
      * 
      * @param data Lista de datos de dispersión a establecer en el gráfico.
      */
-    public void setDrawData(List<Double> data, Double min, Double max) {
+    public void setDrawData(List<Double> data) {
         draw.setData(data);
     }
 

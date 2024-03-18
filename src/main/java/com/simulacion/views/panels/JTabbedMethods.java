@@ -145,22 +145,22 @@ public class JTabbedMethods extends JTabbedPane {
      * @param type Tipo de método.
      * @param data Lista de datos de dispersión.
      */
-    public void setDrawData(String type, List<Double> data, Double min, Double max) {
+    public void setDrawData(String type, List<Double> data) {
         switch (type) {
             case "HALF":
-                halfSquare.setDrawData(data, min, max);
+                halfSquare.setDrawData(data);
                 break;
             case "LINEAR":
-                linear.setDrawData(data,min,max);
+                linear.setDrawData(data);
                 break;
             case "MULTIPLICATIVE":
-                multiplicative.setDrawData(data,min,max);
+                multiplicative.setDrawData(data);
                 break;
             case "UNIFORM":
-                uniform.setDrawData(data,min,max);
+                uniform.setDrawData(data);
                 break;
             case "NORMAL":
-                normal.setDrawData(data,min,max);
+                normal.setDrawData(data);
                 break;
         }
     }

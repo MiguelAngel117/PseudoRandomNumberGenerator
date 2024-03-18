@@ -24,7 +24,7 @@ public class JPanelDraw extends JPanel {
 
     private void initComponents() {
         dataset = new XYSeriesCollection();
-        chart = ChartFactory.createXYLineChart("Distribución Normal (Campana de Gauss)", "Valor", "Frecuencia", dataset,
+        chart = ChartFactory.createXYLineChart("Frecuencias Ni", "Cantidad", "Ni", dataset,
                 PlotOrientation.VERTICAL, true, true, false);
 
         XYPlot plot = (XYPlot) chart.getPlot();
@@ -36,8 +36,8 @@ public class JPanelDraw extends JPanel {
         plot.setRenderer(renderer);
 
         NumberAxis yAxis = (NumberAxis) plot.getRangeAxis();
-        yAxis.setAutoRangeIncludesZero(false); // Evita que el eje Y incluya el cero
-        yAxis.setAutoRange(true); // Ajusta automáticamente el rango del eje Y
+        yAxis.setAutoRangeIncludesZero(false);
+        yAxis.setAutoRange(true);
 
         add(new ChartPanel(chart), BorderLayout.CENTER);
     }
