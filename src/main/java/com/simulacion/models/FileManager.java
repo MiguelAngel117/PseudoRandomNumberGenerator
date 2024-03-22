@@ -16,7 +16,7 @@ public class FileManager {
      */
     public static void writeToArchive(List<Double> numbers, String filePath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            StringJoiner joiner = new StringJoiner(";");
+            StringJoiner joiner = new StringJoiner("\n");
             for (Double number : numbers) {
                 joiner.add(String.valueOf(number));
             }
