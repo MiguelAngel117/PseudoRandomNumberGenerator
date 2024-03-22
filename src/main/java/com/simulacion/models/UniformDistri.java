@@ -33,8 +33,8 @@ public class UniformDistri {
      * @return Lista de números aleatorios Ri.
      */
     private List<Double> generateNumbersRi() {
-        ReduceLinear random = new ReduceLinear(quantity);
-        return random.getListRi();
+        ReduceLinear numbersAleatory = new ReduceLinear(quantity);
+        return numbersAleatory.getListRi();
     }
 
     /**
