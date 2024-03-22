@@ -1,7 +1,7 @@
 package com.simulacion.views.sections;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;

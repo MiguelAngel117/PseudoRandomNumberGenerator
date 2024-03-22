@@ -84,7 +84,12 @@ public class Controller implements ActionListener{
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setTableRow(method,null,uniform.getNumbersRi(), uniform.getNumbersNi());
-        frameMain.setDrawData(method, uniform.getNumbersNi());
+        if(uniform.getNumbersRi().size() <= 10000){
+            frameMain.setDrawData(method, uniform.getNumbersNi());
+        }else{
+            frameMain.printMessage("No se grafica, pues la aplicación se congela por la libreria que se usa");
+        }
+        
     }
 
     public void normalDistribution(JPanelSection section, String method) throws IOException{
@@ -94,6 +99,11 @@ public class Controller implements ActionListener{
         frameMain.resetDraw(method);
         frameMain.setTableRow(method,null,normal.getAleatoryRi(), normal.getAleatoryNi());
         frameMain.setDrawData(method, normal.getAleatoryNi());
+        if(normal.getAleatoryRi().size() <= 10000){
+            frameMain.setDrawData(method, normal.getAleatoryNi());
+        }else{
+            frameMain.printMessage("No se grafica, pues la aplicación se congela por la libreria que se usa");
+        }
     }
 
     public void linearCongruence(JPanelSection section, String method) throws IOException{

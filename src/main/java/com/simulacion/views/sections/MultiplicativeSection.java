@@ -4,8 +4,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.GridLayout;
+
 
 import com.simulacion.views.panels.JPanelSection;
 
