@@ -44,3 +44,4 @@ public class ReduceLinear {
         return listRi;
     }
 }
+
