@@ -83,8 +83,8 @@ public class Controller implements ActionListener{
         FileManager.writeToArchive(uniform.getNumbersRi(), "files/uniformRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
-        frameMain.setDrawData(method, uniform.getNumbersNi());
         frameMain.setTableRow(method,null,uniform.getNumbersRi(), uniform.getNumbersNi());
+        frameMain.setDrawData(method, uniform.getNumbersNi());
     }
 
     public void normalDistribution(JPanelSection section, String method) throws IOException{
@@ -92,8 +92,8 @@ public class Controller implements ActionListener{
         FileManager.writeToArchive(normal.getAleatoryRi(), "files/normalRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
-        frameMain.setDrawData(method, normal.getAleatoryNi());
         frameMain.setTableRow(method,null,normal.getAleatoryRi(), normal.getAleatoryNi());
+        frameMain.setDrawData(method, normal.getAleatoryNi());
     }
 
     public void linearCongruence(JPanelSection section, String method) throws IOException{
@@ -102,8 +102,8 @@ public class Controller implements ActionListener{
         FileManager.writeToArchive(congruence.getAleatoryRi(), "files/linearCongruenceRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
-        frameMain.setDrawData(method, congruence.getAleatoryNi());
         frameMain.setTableRow(method,congruence.getSeeds(),congruence.getAleatoryRi(), congruence.getAleatoryNi());
+        frameMain.setDrawData(method, congruence.getAleatoryNi());
     }
 
     public void multiplicativeCongruence(JPanelSection section, String method) throws IOException{
@@ -111,8 +111,8 @@ public class Controller implements ActionListener{
         FileManager.writeToArchive(mCongruence.getAleatoryRi(), "files/multiCongruenceRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
-        frameMain.setDrawData(method, mCongruence.getAleatoryNi());
         frameMain.setTableRow(method,mCongruence.getSeeds(),mCongruence.getAleatoryRi(), mCongruence.getAleatoryNi());
+        frameMain.setDrawData(method, mCongruence.getAleatoryNi());
     }
 
     public void halfSquares(JPanelSection section, String method) throws IOException{
@@ -122,8 +122,8 @@ public class Controller implements ActionListener{
             FileManager.writeToArchive(squares.getAleatory(), "files/halfSquaresRi.csv");
             frameMain.resetTable(method);
             frameMain.resetDraw(method);
-            frameMain.setDrawData(method, squares.getNumbersNi());
             frameMain.setTableRow(method,squares.getCenters(),squares.getAleatory(),squares.getNumbersNi());
+            frameMain.setDrawData(method, squares.getNumbersNi());
         }else{
             frameMain.printMessage("La semilla inicial debe tener la misma cantidad de digitos que solicitó");
         }        
