@@ -36,7 +36,7 @@ public class ReduceLinear {
     }
 
     public double generateRi() {
-        seed = (a * seed + c) % m;
+        seed = ((a * seed) + c) % m;
         return (double) seed / m;
     }
 

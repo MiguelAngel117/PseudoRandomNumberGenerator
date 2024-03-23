@@ -11,6 +11,7 @@ import com.simulacion.models.HalfSquares;
 import com.simulacion.models.LinearCongruence;
 import com.simulacion.models.MultiplicativeCongruence;
 import com.simulacion.models.NormalDistri;
+import com.simulacion.models.ReduceLinear;
 import com.simulacion.models.UniformDistri;
 import com.simulacion.views.frames.JFrameMain;
 import com.simulacion.views.panels.JPanelSection;
@@ -21,10 +22,12 @@ public class Controller implements ActionListener{
     private JPanelSection section;
 
     public Controller(){
-        frameMain = new JFrameMain(this);
-        frameMain.setVisible(true);
-        double x = 0.04824394453316927;
-        System.out.println(new NormalDistribution(27.2, 3.4).inverseCumulativeProbability(x));
+        ReduceLinear reduce = new ReduceLinear(128);
+        for (double x : reduce.getListRi()) {
+            System.out.println(x);
+        }
+        //frameMain = new JFrameMain(this);
+        //frameMain.setVisible(true);
     }
 
     @Override
