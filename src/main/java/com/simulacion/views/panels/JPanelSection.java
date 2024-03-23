@@ -51,6 +51,13 @@ public class JPanelSection extends JPanel {
         return 0;
     }
 
+    public double getAverage(){
+        return 0;
+    }
+    public double getStandardDeviation(){
+        return 0;
+    }
+
     public int getT() {
         return 0;
     }

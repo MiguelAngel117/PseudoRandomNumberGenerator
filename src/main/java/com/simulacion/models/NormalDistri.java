@@ -1,7 +1,6 @@
 package com.simulacion.models;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -11,12 +10,8 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 public class NormalDistri {
 
     private List<Double> aleatoryNumbersRi;
-    private List<Double> aleatoryNumbersXi;
     private List<Double> aleatoryNumbersNi;
     private int quantity;
-    private int quantityXi;
-    private int min;
-    private int max;
     private double average;
     private double desviation;
 
@@ -28,19 +23,16 @@ public class NormalDistri {
      * @param max       Valor máximo del rango para generación de Xi.
      * @param quantityXi Cantidad de números Xi a generar para entrenamiento.
      */
-    public NormalDistri(int quantity, int min, int max, int quantityXi) {
+    public NormalDistri(int quantity, double average, double desviation) {
         this.quantity = quantity;
-        this.min = min;
-        this.max = max;
-        this.quantityXi = quantityXi;
-        aleatoryNumbersXi = new ArrayList<>();
+        this.average = average;
+        this.desviation = desviation;
         aleatoryNumbersRi = new ArrayList<>();
         aleatoryNumbersNi = new ArrayList<>();
         generateRandomRi();
-        generateRandomXi();
-        calculateAverage();
-        calculateStandardDeviation();
         generateRandomNi();
+        //calculateAverage();
+        //calculateStandardDeviation();
     }
 
     /**
@@ -49,19 +41,6 @@ public class NormalDistri {
     private void generateRandomNi() {
         for (Double x : aleatoryNumbersRi) {
             aleatoryNumbersNi.add(new NormalDistribution(average, desviation).inverseCumulativeProbability(x));
-        }
-    }
-
-    /**
-     * Genera números aleatorios y los agrega a la lista Xi.
-     */
-    private void generateRandomXi() {
-        Random random = new Random();
-        ReduceLinear linearR = new ReduceLinear();
-        for (int i = 0; i < quantityXi; i++) {
-            int randomValue = random.nextInt((max - min) + 1) + min;
-            double xi = randomValue + linearR.generateRi();
-            aleatoryNumbersXi.add(xi);
         }
     }
 
@@ -77,30 +56,30 @@ public class NormalDistri {
      * Calcula el promedio de la lista de números Xi.
      */
     public void calculateAverage() {
-        if (aleatoryNumbersXi == null || aleatoryNumbersXi.isEmpty()) {
+        if (aleatoryNumbersNi == null ||aleatoryNumbersNi.isEmpty()) {
             throw new IllegalArgumentException("La lista de números Xi no puede ser nula o vacía.");
         }
         double sum = 0;
-        for (double number : aleatoryNumbersXi) {
+        for (double number : aleatoryNumbersNi) {
             sum += number;
         }
-        average = sum / aleatoryNumbersXi.size();
+        average = sum / aleatoryNumbersNi.size();
     }
 
     /**
      * Calcula la desviación estándar de la lista de números Xi.
      */
     public void calculateStandardDeviation() {
-        if (aleatoryNumbersXi == null || aleatoryNumbersXi.size() < 2) {
+        if (aleatoryNumbersNi == null || aleatoryNumbersNi.size() < 2) {
             throw new IllegalArgumentException("La lista de números Xi debe contener al menos dos elementos.");
         }
         double sumSquaredDifferences = 0;
-        for (double number : aleatoryNumbersXi) {
+        for (double number : aleatoryNumbersNi) {
             double difference = number - average;
             sumSquaredDifferences += difference * difference;
         }
 
-        double variance = sumSquaredDifferences / (aleatoryNumbersXi.size() - 1);
+        double variance = sumSquaredDifferences / (aleatoryNumbersNi.size() - 1);
         desviation = Math.sqrt(variance);
     }
 

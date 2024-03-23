@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import org.apache.commons.math3.distribution.NormalDistribution;
+
 import com.simulacion.models.FileManager;
 import com.simulacion.models.HalfSquares;
 import com.simulacion.models.LinearCongruence;
@@ -21,6 +23,8 @@ public class Controller implements ActionListener{
     public Controller(){
         frameMain = new JFrameMain(this);
         frameMain.setVisible(true);
+        double x = 0.04824394453316927;
+        System.out.println(new NormalDistribution(27.2, 3.4).inverseCumulativeProbability(x));
     }
 
     @Override
@@ -93,13 +97,12 @@ public class Controller implements ActionListener{
     }
 
     public void normalDistribution(JPanelSection section, String method) throws IOException{
-        NormalDistri normal = new NormalDistri(section.getQuantity(),section.getMin(),section.getMax(), section.getXi());
+        NormalDistri normal = new NormalDistri(section.getQuantity(),section.getAverage(), section.getStandardDeviation());
         FileManager.writeToArchive(normal.getAleatoryRi(), "files/normalRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);
         frameMain.setTableRow(method,null,normal.getAleatoryRi(), normal.getAleatoryNi());
-        frameMain.setDrawData(method, normal.getAleatoryNi());
-        if(normal.getAleatoryRi().size() <= 10000){
+        if(section.getQuantity() <= 10000){
             frameMain.setDrawData(method, normal.getAleatoryNi());
         }else{
             frameMain.printMessage("No se grafica, pues la aplicación se congela por la libreria que se usa");
@@ -108,7 +111,6 @@ public class Controller implements ActionListener{
 
     public void linearCongruence(JPanelSection section, String method) throws IOException{
         LinearCongruence congruence = new LinearCongruence(section.getXi(), section.getK(), section.getC(), section.getG(), section.getQuantity(), section.getMin(), section.getMax(), section.getType());
-
         FileManager.writeToArchive(congruence.getAleatoryRi(), "files/linearCongruenceRi.csv");
         frameMain.resetTable(method);
         frameMain.resetDraw(method);

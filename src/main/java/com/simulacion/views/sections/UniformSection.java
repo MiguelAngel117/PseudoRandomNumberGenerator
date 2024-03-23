@@ -24,7 +24,7 @@ public class UniformSection extends JPanelSection {
      */
     public UniformSection(ActionListener listener) {
         // Inicialización de campos
-        quantity = createTextField("Cantidad", "0");
+        quantity = createTextField("Cantidad", "10");
         max = createTextField("Maximo", "1");
         min = createTextField("Minimo", "0");
         button = createGenerateButton("Generar Numeros", listener);

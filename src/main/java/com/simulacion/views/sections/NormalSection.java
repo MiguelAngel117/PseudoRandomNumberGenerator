@@ -14,9 +14,8 @@ import com.simulacion.views.panels.JPanelSection;
 public class NormalSection extends JPanelSection {
     // Declaración de campos
     private final JTextField quantity; // Campo para la cantidad de números a generar
-    private final JTextField sampleQuantity; // Campo para la cantidad de Xo
-    private final JTextField max; // Selector para el valor máximo
-    private final JTextField min; // Selector para el valor mínimo
+    private final JTextField average; // Selector para el valor máximo
+    private final JTextField standardDeviation; // Selector para el valor mínimo
     private final JButton button; // Botón para generar números
 
     /**
@@ -25,13 +24,10 @@ public class NormalSection extends JPanelSection {
      */
     public NormalSection(ActionListener listener) {
         // Inicialización de campos
-        quantity = createTextField("Cantidad de Numeros", "0");
-        sampleQuantity = createTextField("Cantidad de Xo", "0");
-        max = createTextField("Maximo", "1");
-        min = createTextField("Minimo", "0");
+        quantity = createTextField("Cantidad de Numeros", "10");
+        average = createTextField("Promedio - Media", "1");
+        standardDeviation = createTextField("Desviación Estandar", "0");
         button = createGenerateButton("Generar Numeros", listener);
-
-        // Configuración del diseño de la sección
         setLayout(new GridLayout(2, 2, 5, 2));
         initComponents(); // Inicialización de componentes
     }
@@ -67,23 +63,23 @@ public class NormalSection extends JPanelSection {
      * Método para inicializar los componentes y añadirlos al panel.
      */
     private void initComponents() {
-        add(sampleQuantity);
-        add(max);
-        add(button);
+        add(average);
         add(quantity);
-        add(min);
+        add(standardDeviation);
+        add(button);
+        
     }
 
     // Métodos de acceso para obtener los valores de los campos
 
     @Override
-    public int getMax() {
-        return Integer.parseInt(max.getText()); // Devuelve el valor entero del selector del valor máximo
+    public double getStandardDeviation() {
+        return Double.parseDouble(standardDeviation.getText()); // Devuelve el valor entero del selector del valor máximo
     }
 
     @Override
-    public int getMin() {
-        return Integer.parseInt(min.getText()); // Devuelve el valor entero del selector del valor mínimo
+    public double getAverage() {
+        return Double.parseDouble(average.getText()); // Devuelve el valor entero del selector del valor mínimo
     }
 
     @Override
@@ -91,8 +87,4 @@ public class NormalSection extends JPanelSection {
         return Integer.parseInt(quantity.getText());
     }
 
-    @Override
-    public int getXi() {
-        return Integer.parseInt(sampleQuantity.getText());
-    }
 }

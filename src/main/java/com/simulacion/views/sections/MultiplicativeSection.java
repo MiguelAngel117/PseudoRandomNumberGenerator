@@ -35,7 +35,7 @@ public class MultiplicativeSection extends JPanelSection {
         g = createTextField("Valor de G","0");
         max = createTextField("Máximo", "1");
         min = createTextField("Minimo", "0");
-        quantity = createTextField("Cantidad", "0");
+        quantity = createTextField("Cantidad", "10");
         jComboBox = createJComboBox(listener);
         button = createGenerateButton("Generar Numeros", listener);
         

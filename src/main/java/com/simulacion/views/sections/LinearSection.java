@@ -35,7 +35,7 @@ public class LinearSection extends JPanelSection {
         g = createTextField("Valor de G", "0"); // Crea un campo de texto para el valor de G
         max = createTextField("Máximo", "1"); 
         min = createTextField("Minimo", "0"); 
-        quantity = createTextField("Cantidad", "0"); // Crea un campo de texto para la cantidad de números a generar
+        quantity = createTextField("Cantidad", "10"); // Crea un campo de texto para la cantidad de números a generar
         button = createButton("Generar Numeros", listener); // Crea un botón para generar números
         jComboBox = createJComboBox(listener); // Crea una lista desplegable para la opción de generación
 

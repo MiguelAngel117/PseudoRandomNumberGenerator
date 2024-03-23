@@ -30,7 +30,7 @@ public class HalfSquaresSection extends JPanelSection {
         digits = createTextField("Digitos Para Extracción", "4"); // Crea un campo de texto para los dígitos con un valor predeterminado de "4"
         max = createTextField("Máximo", "1"); 
         min = createTextField("Minimo", "0"); 
-        quantity = createTextField("Cantidad", "0"); // Crea un campo de texto para la cantidad de números a generar
+        quantity = createTextField("Cantidad", "10"); // Crea un campo de texto para la cantidad de números a generar
         button = createGenerateButton("Generar Numeros", listener); // Crea un botón para generar números
 
         setLayout(new GridLayout(2, 3, 5, 2)); // Establece el diseño del panel
