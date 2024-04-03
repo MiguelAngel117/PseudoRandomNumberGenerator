@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
-
 import com.simulacion.models.FileManager;
 import com.simulacion.models.HalfSquares;
 import com.simulacion.models.LinearCongruence;
@@ -22,12 +20,8 @@ public class Controller implements ActionListener{
     private JPanelSection section;
 
     public Controller(){
-        ReduceLinear reduce = new ReduceLinear(128);
-        for (double x : reduce.getListRi()) {
-            System.out.println(x);
-        }
-        //frameMain = new JFrameMain(this);
-        //frameMain.setVisible(true);
+        frameMain = new JFrameMain(this);
+        frameMain.setVisible(true);
     }
 
     @Override

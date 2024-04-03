@@ -31,8 +31,6 @@ public class NormalDistri {
         aleatoryNumbersNi = new ArrayList<>();
         generateRandomRi();
         generateRandomNi();
-        //calculateAverage();
-        //calculateStandardDeviation();
     }
 
     /**
@@ -50,37 +48,6 @@ public class NormalDistri {
     private void generateRandomRi() {
         ReduceLinear linear = new ReduceLinear(quantity);
         aleatoryNumbersRi = linear.getListRi();
-    }
-
-    /**
-     * Calcula el promedio de la lista de números Xi.
-     */
-    public void calculateAverage() {
-        if (aleatoryNumbersNi == null ||aleatoryNumbersNi.isEmpty()) {
-            throw new IllegalArgumentException("La lista de números Xi no puede ser nula o vacía.");
-        }
-        double sum = 0;
-        for (double number : aleatoryNumbersNi) {
-            sum += number;
-        }
-        average = sum / aleatoryNumbersNi.size();
-    }
-
-    /**
-     * Calcula la desviación estándar de la lista de números Xi.
-     */
-    public void calculateStandardDeviation() {
-        if (aleatoryNumbersNi == null || aleatoryNumbersNi.size() < 2) {
-            throw new IllegalArgumentException("La lista de números Xi debe contener al menos dos elementos.");
-        }
-        double sumSquaredDifferences = 0;
-        for (double number : aleatoryNumbersNi) {
-            double difference = number - average;
-            sumSquaredDifferences += difference * difference;
-        }
-
-        double variance = sumSquaredDifferences / (aleatoryNumbersNi.size() - 1);
-        desviation = Math.sqrt(variance);
     }
 
     /**
